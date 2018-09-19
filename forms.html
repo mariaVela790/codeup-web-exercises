@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With US</title>
+</head>
+<body>
+    <h1>Veridian Dynamics: Register With Us!</h1>
+    <main>
+        <form method="POST" action="http://http-inspector.glitch.me/">
+            <section id="email">
+                <p>
+                    <label for="emailInput">Email: </label><br>
+                    <input id="emailInput" name="emailInput" type="email" placeholder="email@gwebsite.com">
+                </p>
+                <p>
+                    <label for="password">Password: </label><br>
+                    <input id="password" name="password" type="password" placeholder="password">
+                </p>
+            </section>
+
+            <section id="bio">
+                <p>
+                    <label for="bio_area">Tell Us About Yourself</label>
+                </p>
+                <p>
+                    <textarea id="bio_area"></textarea>
+                </p>
+            </section>
+
+            <!--This hear about us question is a modified version for #7 part 2 to allow multiple selections.-->
+            <section id="hear-about-us">
+                <p>
+                    What browser are you using?
+                </p>
+                <label>
+                    <input type="checkbox" name="hear-about[]" id="hear-about1" value="billboard">
+                    Billboard Advertisement
+                </label>
+                <label>
+                    <input type="checkbox" name="hear-about[]" id="hear-about2" value="radio advertisement">
+                    Radio Advertisement
+                </label>
+                <label>
+                    <input type="checkbox" name="hear-about[]" id="hear-about3" value="internet advertisement">
+                    Internet Advertisement
+                </label>
+                <label>
+                    <input type="checkbox" name="hear-about[]" id="hear-about4" value="other">
+                    Other
+                </label>
+            </section>
+
+            <!-- Hear about us question with radio buttons
+
+            <section id="hear-about-us">
+                <p>
+                    What browser are you using?
+                </p>
+                <label>
+                    <input type="radio" name="hear-about" id="hear-about1" value="billboard">
+                    Billboard Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about" id="hear-about2" value="radio advertisement">
+                    Radio Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about" id="hear-about3" value="internet advertisement">
+                    Internet Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about" id="hear-about4" value="other">
+                    Other
+                </label>
+            </section>
+            -->
+            <!-- Hear about us question with radio buttons and change of making names different, which allowed multiple choice selections
+
+            <section id="hear-about-us">
+                <p>
+                    What browser are you using?
+                </p>
+                <label>
+                    <input type="radio" name="hear-about0" id="hear-about1" value="billboard">
+                    Billboard Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about1" id="hear-about2" value="radio advertisement">
+                    Radio Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about2" id="hear-about3" value="internet advertisement">
+                    Internet Advertisement
+                </label>
+                <label>
+                    <input type="radio" name="hear-about3" id="hear-about4" value="other">
+                    Other
+                </label>
+            </section>
+            -->
+            <section>
+                <p>
+                    <label for="browser-type">What browser are you using?</label for="browser-type">
+                    <select name="browser-type" id="browser-type">
+                        <option value="chrome" selected>Chrome</option>
+                        <option value="safari">Safari</option>
+                        <option value="explorer">Explorer</option>
+                        <option value="firefox">Firefox</option>
+                    </select>
+                </p>
+
+            </section>
+            <p>
+                <input type="submit">
+
+            </p>
+        </form>
+    </main>
+
+</body>
+</html>
