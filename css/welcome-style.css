@@ -1,0 +1,55 @@
+body {
+    font-family: 'Helvetica','Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+h1, h2, header p{
+   font-family: 'Rockwell', 'Courier Bold', 'Courier', 'Georgia', 'Times', 'Times New Roman', serif;
+    -webkit-text-stroke: .05px #808080;
+}
+img {
+    width: 25%;
+    height: auto;
+    float: left;
+}
+.values-process-vision{
+    background-color:#9EBEE2;
+    /*height: 14em;*/
+    float: left;
+    flex-wrap: nowrap;
+    width: 15%;
+    height: auto;
+    padding: 0 8%;
+    margin: 2px;
+}
+div.company-vision-images{
+    clear: left;
+    /*background-color: #F17300;*/
+}
+.images{
+    background-color: #F17300;
+    padding: 10px;
+}
+.fancy-header{
+    text-align: center;
+    color: #E0E0E0;
+    background-color: #3F6891;
+}
+
+#cf {
+    position:relative;
+    height:281px;
+    width:450px;
+    margin:0 auto;
+}
+
+#cf img {
+    position:absolute;
+    left:0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+#cf img.top:hover {
+    opacity:0;
+}
