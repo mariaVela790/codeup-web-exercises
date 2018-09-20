@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+</head>
+<body>
+<h1>Please Sign Up</h1>
+<!--Changed form by adding action attribute-->
+<form method="POST" action="http://http-inspector.glitch.me">
+
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username">
+    <br>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email">
+    <br>
+
+    <!--Made password and confirm password more secure by changing type to password-->
+    <label for="password">password</label>
+    <input id="password" type="password" name="password">
+    <br>
+
+    <label for="confirm_password">confirm password</label>
+    <input id="confirm_password" type="password" name="confirm_password">
+    <br>
+
+    <!--Made radio buttons and check boxes connect to text by using labels and ids-->
+    <h2>Filing Status</h2>
+
+    <label for="filing_status1">
+        <input type="radio" name="filing_status" value="single" id="filing_status1">
+        Single
+    </label>
+    <br>
+
+    <label for="filing_status2">
+        <input type="radio" name="filing_status" value="married_joint" id="filing_status2">
+        Married Filing Jointly
+    </label>
+    <br>
+
+    <label for="filing_status3">
+        <input type="radio" name="filing_status" value="married_separate" id="filing_status3">
+        Married Filing Separately
+    </label>
+    <br>
+
+    <label for="filing_status4">
+        <input type="radio" name="filing_status" value="hoh" id="filing_status4">
+        Head of Household
+    </label>
+    <br>
+
+    <h2>This past year I was (check all that apply)</h2>
+
+    <label for="self_employed">
+        <input type="checkbox" name="employment_status[]" value="self_employed" id="self_employed">
+        Self - Employed
+    </label>
+    <br>
+
+    <label for="small_business">
+        <input type="checkbox" name="employment_status[]" value="small_business" id="small_business">
+        Employed by a small business (< 50 employees)
+    </label>
+    <br>
+
+    <label for="large_business">
+        <input type="checkbox" name="employment_status[]" value="large_business" id="large_business">
+        Employed by a large business (> 50 employees)
+    </label>
+    <br>
+
+    <!--Made selection list operable by making the select the wrapper tag and the option the inner tags-->
+    <h2>What kind of phone do you have</h2>
+
+    <select name="phone type">
+        <option value="android">Android</option>
+        <option value="iphone">iPhone</option>
+        <option value="windows">Windows Phone</option>
+        <option value="other">Other</option>
+    </select>
+
+    <hr>
+
+    <!--Made newsletter option check by default by adding checked attribute-->
+    <label for="newsletter">Sign Me Up For The Newsletter
+        <input type="checkbox" name="newsletter" id="newsletter" checked>
+    </label>
+    <!--Added submit button to allow users to submit form.-->
+    <input type="submit">
+
+</form>
+
+
+
+</body>
+</html>

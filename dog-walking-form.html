@@ -7,8 +7,24 @@
 <body>
     <!--The goal of this form is to register a pet for a dog walking site-->
     <h1>Register For Our Dog Walking Service!</h1>
+    <hr>
     <form method="POST" action="http://http-inspector.glitch.me">
-
+        <!--Owner Info-->
+        <label for="owner-last">Last Name: </label>
+        <input type="text" name="owner-info" id="owner-last">
+        <label for="owner-first">First Name: </label>
+        <input type="text" name="owner-info" id="owner-first">
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" name="phone-number" type="tel"><br>
+        
+        <!--Dog Info-->
+        <label for="dog-name">Dog's Name: </label>
+        <input type="text" name="dog-name" id="dog-name">
+        <label for="breed-selection">What breed is your dog?</label>
+        <select id="breed-selection" name="breed">
+            <option value=""></option>
+        </select>
+        
     </form>
 </body>
 </html>
