@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+.top-nav{
+    background: rgb(51	51	51);
+    width: 100%;
+}
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.nav-item {
+    padding: 1.5em;
+    display: inline-block;
+}

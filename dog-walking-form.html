@@ -3,28 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Dog Walking Form</title>
+    <link rel="stylesheet" href="css/dog-walking-css.css">
 </head>
 <body>
-    <!--The goal of this form is to register a pet for a dog walking site-->
-    <h1>Register For Our Dog Walking Service!</h1>
-    <hr>
-    <form method="POST" action="http://http-inspector.glitch.me">
-        <!--Owner Info-->
-        <label for="owner-last">Last Name: </label>
-        <input type="text" name="owner-info" id="owner-last">
-        <label for="owner-first">First Name: </label>
-        <input type="text" name="owner-info" id="owner-first">
-        <label for="phone-number">Phone Number</label>
-        <input id="phone-number" name="phone-number" type="tel"><br>
-        
-        <!--Dog Info-->
-        <label for="dog-name">Dog's Name: </label>
-        <input type="text" name="dog-name" id="dog-name">
-        <label for="breed-selection">What breed is your dog?</label>
-        <select id="breed-selection" name="breed">
-            <option value=""></option>
-        </select>
-        
-    </form>
+    <!--Navigation Bar-->
+    <nav class="top-nav">
+        <ul class="nav">
+            <li class="nav-item"><img src="img/size30.svg" alt="pet-icon"></li>
+            <li class="nav-item"><a href="#">Home</a></li>
+            <li class="nav-item"><a href="#">About Us</a></li>
+            <li class="nav-item"><a href="#">Contact Us</a></li>
+            <li class="nav-item"><a href="#">Register</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!--The goal of this form is to register a pet for a dog walking site-->
+        <h2>Register For Our Dog Walking Service!</h2>
+
+        <form method="POST" action="http://http-inspector.glitch.me">
+            <!--Owner Info-->
+            <div class="section-item owner-info">
+                <section>
+                    <h3>Owner Info</h3>
+                    <h4>Contact Info</h4>
+                    <label for="owner-last">Last Name: </label>
+                    <input type="text" name="owner-info" id="owner-last"><br>
+                    <label for="owner-first">First Name: </label>
+                    <input type="text" name="owner-info" id="owner-first"><br>
+                    <label for="phone-number">Phone Number: </label>
+                    <input id="phone-number" name="phone-number" type="tel"><br>
+                    <label for="owner-email">Owner Email: </label>
+                    <input type="email" name="owner-email" id="owner-email"><br>
+
+                    <h4>Address</h4>
+                    <label for="address-line-one">Address Line 1: </label>
+                    <input type="text" name="address-line-one" id="address-line-one"><br>
+
+                    <label for="address-line-two">Address Line 2: </label>
+                    <input type="text" name="address-line-two" id="address-line-two"><br>
+
+                    <label for="address-city">City: </label>
+                    <input type="text" name="address-city" id="address-city"><br>
+
+                    <label for="address-state">State: </label>
+                    <input type="text" name="address-state" id="address-state"><br>
+
+                    <label for="zipcode">Zipcode: </label>
+                    <input type="number" name="zipcode" id="zipcode"><br>
+
+                </section>
+            </div>
+
+            <!--Dog Info-->
+            <div class="section-item dog-info">
+                <section>
+                    <h3>Doggy Info</h3>
+                    <label for="dog-name">Dog's Name: </label>
+                    <input type="text" name="dog-name" id="dog-name"><br>
+
+                    <label for="breed-selection">What breed is your dog?</label>
+                    <select id="breed-selection" name="breed">
+                        <option value="jack-russell-terrier">Jack Russell Terrier</option>
+                        <option value="golden-retriever">Golden Retriever</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="poodle">Poodle</option>
+                        <option value="pitbull">Pitbull</option>
+                        <option value="rat-terrier">Rat Terrier</option>
+                    </select><br>
+                </section>
+            </div>
+
+
+
+            <!--Emergency Contact Info-->
+            <div class="section-item emergency-contact-info">
+                <section>
+                    <h3>Emergency Contact</h3>
+                    <label for="emergency-contact-name">Name of Emergency Contact: </label>
+                    <input type="text" name="emergency-contact-name" id="emergency-contact-name"><br>
+
+                    <label for="emergency-contact-relation">Relationship: </label>
+                    <input type="text" name="emergency-contact-name" id="emergency-contact-relation"><br>
+
+                    <label for="emergency-contact-phone">Emergency Contact Phone Number: </label>
+                    <input type="phone" name="emergency-contact-phone" id="emergency-contact-phone" placeholder="(xxx)xxx-xxxx"><br>
+                </section>
+            </div>
+
+            <div class="section-item start-and-end-date">
+                <section>
+                    <label for="start-date">Start Date: </label>
+                    <input type="date" name="start-date" id="start-date"><br>
+
+                    <label for="end-date">End Date: </label>
+                    <input type="date" name="end-date" id="end-date"><br>
+                </section>
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>
