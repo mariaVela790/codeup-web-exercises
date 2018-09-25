@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1200px;
+}
+.row{
+    width:100%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear:both;
+}
