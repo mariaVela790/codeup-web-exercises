@@ -1,0 +1,17 @@
+/*.navbar-nav .sign-in-float {*/
+    /*float: right;*/
+/*}*/
+
+.btn {
+    border: 1px solid grey;
+}
+
+.jumbotron {
+    background-image: url(../img/pizza.png);
+    padding: 2em 0;
+}
+h1 {
+    background-color: #FFFFFF;
+    opacity: .5;
+    text-align: center;
+}
