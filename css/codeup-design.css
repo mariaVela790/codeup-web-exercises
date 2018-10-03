@@ -1,0 +1,126 @@
+:root {
+    --main-rd-color: #E6563B;
+    --main-og-color: rgb(235 156 59);
+    --main-gn-color: #7CB06C;
+    --main-tl-color: #00ABA9;
+    --main-lg-color: #F0F0F0;
+    --main-dg-color: #E6E6E6;
+}
+a:visited{
+    color: black;
+}
+brand-size{
+    font-size: 2em;
+}
+.wordposition{
+    position: relative;
+    top: -10px;
+}
+.main-logo {
+    height: 105px;
+    width: 105px;
+}
+body {
+    font-family: 'Abel', sans-serif;
+    /*font-size: 1.2em;*/
+}
+.dg-background{
+    background-color: var(--main-dg-color);
+}
+.lg-background{
+    background-color: var(--main-lg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Anton', sans-serif;
+}
+h1 {
+font-size: 64px;
+}
+h2 {
+font-size: 48px;
+}
+h3 {
+font-size: 40px;
+}
+h4 {
+font-size: 32px;
+}
+h4 {
+font-size: 28px;
+}
+p {
+    /*background-color: var(--main-rd-color);*/
+}
+.twitter-height {
+    height: 2em;
+    width: auto;
+}
+.twitter-color{
+    rgb(0 156 251);
+}
+.thumbnail-dimension {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+.circle-button {
+    border-radius: 100px;
+    /*width: 100%;*/
+    border: 10px solid white;
+    width: 200px;
+    height: 200px;
+    /*position: relative;*/
+}
+h3 .circle-button{
+    line-height: 75px;
+}
+.rd-bg{
+    background-color: #E6563B;
+}
+.oj-bg{
+    background-color: var(--main-og-color);
+}
+.gn-bg{
+    background-color: var(--main-gn-color);
+}
+.bl-bg{
+    background-color: var(--main-tl-color);
+}
+.container-desktop {
+    max-width: 1100px;
+}
+.lo{
+    object-fit: cover;
+    height: 105px;
+    width: 105px;
+    border-radius: 50%;
+
+}
+.navbar-light {
+    width: 100%;
+}
+
+.white-bar {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    background: white;
+}
+/*The following is work to make the buttons more mobile friendly by making them smaller
+for a xs screen*/
+/*@media screen and (max-width: 565px) {*/
+    /*.circle-button {*/
+        /*border-radius: 50px;*/
+        /*!*width: 100%;*!*/
+        /*border: 10px solid white;*/
+        /*width: 150px;*/
+        /*height: 150px;*/
+        /*!*position: relative;*!*/
+    /*}*/
+/*}*/
