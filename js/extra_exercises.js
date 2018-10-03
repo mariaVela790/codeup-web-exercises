@@ -101,13 +101,54 @@
 //         + areaInFtSqrd + ' square feet\n'
 //         + areaInMSqrd.toFixed(2) + ' square meters');
 
-//NUMBER 5
-var numPeople = prompt('How many people? ');
-var numPizzas = prompt('How many pizzas do you have? ');
-var numSlicesPerPizza = prompt('How many slices per pizza? ');
-var totalSlices = numPizzas * numSlicesPerPizza;
-alert(numPeople + ' people with ' + numPizzas + ' pizzas');
-var slicesPerPerson = parseInt(totalSlices / numPeople);
-alert('Each person gets ' + slicesPerPerson + ' pieces of pizza.');
-var slicesLeft = totalSlices % numPeople;
-alert('There are ' + slicesLeft + ' leftover pieces.');
+// //NUMBER 5
+// var numPeople = prompt('How many people? ');
+// var numPizzas = prompt('How many pizzas do you have? ');
+// var numSlicesPerPizza = prompt('How many slices per pizza? ');
+// var totalSlices = numPizzas * numSlicesPerPizza;
+// alert(numPeople + ' people with ' + numPizzas + ' pizzas');
+// var slicesPerPerson = parseInt(totalSlices / numPeople);
+// alert('Each person gets ' + slicesPerPerson + ' pieces of pizza.');
+// var slicesLeft = totalSlices % numPeople;
+// alert('There are ' + slicesLeft + ' leftover pieces.');
+
+// //NUMBER 6
+// //Math.ceil()
+// // 1 gal = 350 ft^2
+// var squareFtOfRoom = 360;
+// const sqFtPerGallonPaint = 350;
+// var numCansForRoom = squareFtOfRoom / sqFtPerGallonPaint;
+// var paintAmountRounded = Math.ceil(numCansForRoom);
+// console.log(paintAmountRounded);
+
+
+// //  NUMBER 7
+// var amountOfEuros = parseFloat(prompt('Enter amount in euros: '));
+// var conversionRate = parseFloat(prompt('Enter current conversion rate: '));
+// var amountOfDollarsUSD = '$' + ((Math.ceil(amountOfEuros * conversionRate)).toFixed(2));
+// alert(amountOfDollarsUSD);
+
+
+// // //NUMBER 8
+// var principalAmount = parseFloat(prompt('Enter principal amount: '));
+// var ratePercent = parseFloat(prompt('Enter rate as a percentage: '));
+// var timeIn = parseFloat(prompt('Enter time for investment: '));
+// var raterPercentDecimal = ratePercent / 100;
+// var ratePercentString = raterPercentDecimal + '%';
+// var  investmentVal = (principalAmount * (1 + (raterPercentDecimal * timeIn))).toFixed(2);
+// var investmentValString = '$' + investmentVal;
+// alert('After ' + timeIn + ' years at ' + ratePercentString
+//     + ' the investment will be worth ' + investmentValString);
+
+//NUMBER 9
+// var principalAmount = parseFloat(prompt('Enter principal amount: '));
+// var ratePercent = parseFloat(prompt('Enter rate as a percentage: '));
+// var timeIn = parseFloat(prompt('Enter years for investment: '));
+// var periodsPerYear = parseFloat(prompt('Enter number of periods per year to compound: '));
+// var raterPercentDecimal = ratePercent / 100;
+// var  investmentVal = principalAmount * Math.pow((1 + ((raterPercentDecimal / periodsPerYear))), (periodsPerYear * timeIn));
+// var investmentValFixed = (investmentVal).toFixed(2);
+// var ratePercentString = raterPercentDecimal + '%';
+// var investmentValString = '$' + investmentValFixed;
+// alert('After ' + timeIn + ' years at ' + ratePercentString
+//     + ' the investment will be worth ' + investmentValString);

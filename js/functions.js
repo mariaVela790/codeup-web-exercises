@@ -93,12 +93,18 @@ console.log(isTwo(random));
  * problem statement: take in user input of a tipPercent and totalBill and return the
  * tip amount only
  */
+
+ /**
+ * Discussed with instructor: it was recommended to format the result as a string including the '$'
+  * and fixed decimal.
+ */
 function calculateTip(totalBill, tipPercent){
-    var tipTotal = 0;
+    var tipOutput = '';
     tipPercent = parseFloat(tipPercent);
     totalBill = parseFloat(totalBill);
-    tipTotal = (tipPercent * totalBill);
-    return tipTotal;
+    var tipTotal = (Math.round((tipPercent * totalBill))).toFixed(2);
+    var tipOutput = '$' + tipTotal;
+    return tipOutput;
 }
 // console.log(calculateTip(0.20, 20));
 // console.log(calculateTip(0.25, 25.50));
@@ -114,7 +120,7 @@ function calculateTip(totalBill, tipPercent){
 
 var totalBill = prompt('Enter total bill amount: ');
 var tipPercent = prompt('Enter tip percentage: ');
-var tipAmount = '$' + calculateTip(totalBill, tipPercent);
+var tipAmount = calculateTip(totalBill, tipPercent);
 alert('Your tip amount is ' + tipAmount);
 
 /**
@@ -131,8 +137,15 @@ alert('Your tip amount is ' + tipAmount);
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+/**
+ * Discussed with instructor: it was recommended to format the result as a string including the '$'
+ * and fixed decimal.
+ */
 function applyDiscount(originalPrice, discountPercent){
-    var discountedPrice = 0;
-    discountedPrice = originalPrice - (originalPrice * discountPercent);
+    var discountedPrice = '';
+    var discountCalc = originalPrice - (originalPrice * discountPercent);
+    discountedPrice = '$' + discountCalc;
     return discountedPrice;
 }
+console.log(applyDiscount(100, .2));
