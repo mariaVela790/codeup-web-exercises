@@ -1,3 +1,4 @@
+"use strict";
 
 //function takes in string
 
@@ -17,30 +18,57 @@
 //     return output;
 // }
 
-//**make a function, hasLetterA() that takes in a string and returns true if the string contains "a"
-// and false if it does not; test the function
+// //**make a function, hasLetterA() that takes in a string and returns true if the string contains "a"
+// // and false if it does not; test the function
+//
+// //STEPS FOR hasLetterA()
+// //take in a string
+//
+// //search for index of a
+//
+// //decide if index is valid
+//
+// //return whether or not index is valid
+//
+// function hasLetterA(strInput){
+//     var output = false;
+//     var strInput = strInput.toLowerCase();
+//     output = strInput.indexOf('a') >= 0;
+//     return output;
+// }
+//
+//
+// function hasLetterA(strInput){
+//     var output = false;
+//     output = (strInput.indexOf('a') >= 0) || (strInput.indexOf('A') >= 0);
+//     return output;
+// }
 
-//STEPS FOR hasLetterA()
-//take in a string
 
-//search for index of a
+//
+// function sayName(someFunction){
+//     return 'Hello' + someFunction();
+// }
+// function returnMaria(){
+//     return 'Maria';
+// }
+// console.log(sayName(returnMaria));
+//
+//
+// var value = sayName(returnMaria);
 
-//decide if index is valid
+//OR use an anonymous function
+var value = sayName(function(){
+    return 'Maria';
+})
 
-//return whether or not index is valid
+console.log(value);
 
-function hasLetterA(strInput){
-    var output = false;
-    var strInput = strInput.toLowerCase();
-    output = strInput.indexOf('a') >= 0;
-    return output;
-}
-
-
-function hasLetterA(strInput){
-    var output = false;
-    output = (strInput.indexOf('a') >= 0) || (strInput.indexOf('A') >= 0);
-    return output;
-}
-
+(function(){
+    "use strict";
+    function hello(){
+        alert('HI!!');
+    }
+    var justin = 'bob';
+})();
 
