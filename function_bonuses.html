@@ -179,8 +179,16 @@
          */
 
         function numberOfWhiteSpaces(inputString) {
+            var trimmedString = inputString.trim();
+            var numWhiteSpaces = inputString.length - trimmedString.length;
+            return numWhiteSpaces;
+        }
 
-            }
+        console.log((numberOfWhiteSpaces('   total five  ')));;
+
+        function doesStringOccur(firstString, secondString){
+
+        }
 
         </script>
     </body>
