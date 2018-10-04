@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Bonuses</title>
+</head>
+    <body>
+
+        <script>
+            function identity(input){
+                return input;
+            }
+
+            function getRandomNumber(min, max){
+                var output = 0;
+                output = (max * Math.random()) + min;
+                return output;
+            }
+
+            function add(a, b){
+                return a + b;
+            }
+
+            function subtract(a, b){
+                return a - b;
+            }
+
+            function multiply(a, b){
+                return a * b;
+            }
+
+            function divide(numerator, denominator){
+                return numerator / denominator;
+            }
+
+            function remainder(number, divisor){
+                return number % divisor;
+            }
+
+            function square(a){
+                return a * a;
+            }
+
+        //    SUPER DUPER GOLD STAR
+            function sumOfSquares(a, b){
+            //    a^2 + b^2
+                add(square(a), square(b));
+            }
+
+            function doMath(operator, a, b){
+               return operator(a, b);
+            }
+            console.log(doMath(divide, 1, 5));
+        </script>
+    </body>
+</html>

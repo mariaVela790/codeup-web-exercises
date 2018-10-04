@@ -102,7 +102,7 @@ function calculateTip(totalBill, tipPercent){
     var tipOutput = '';
     tipPercent = parseFloat(tipPercent);
     totalBill = parseFloat(totalBill);
-    var tipTotal = (Math.round((tipPercent * totalBill))).toFixed(2);
+    var tipTotal = (tipPercent * totalBill).toFixed(2);
     var tipOutput = '$' + tipTotal;
     return tipOutput;
 }
@@ -118,9 +118,9 @@ function calculateTip(totalBill, tipPercent){
  * then display the dollar amount they should tip
  */
 
-var totalBill = prompt('Enter total bill amount: ');
-var tipPercent = prompt('Enter tip percentage: ');
-var tipAmount = calculateTip(totalBill, tipPercent);
+var totalBill123 = prompt('Enter total bill amount: ');
+var tipPercent123 = prompt('Enter tip percentage: ');
+var tipAmount = calculateTip(totalBill123, tipPercent123);
 alert('Your tip amount is ' + tipAmount);
 
 /**
