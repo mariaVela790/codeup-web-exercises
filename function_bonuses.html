@@ -7,162 +7,166 @@
     <body>
 
         <script>
-        //     function returnTwo(){
-        //         return 2;
-        //     }
-        //
-        //     console.log(returnTwo());
-        //
-        //     function returnName(){
-        //         return 'Maria';
-        //     }
-        //
-        //     console.log(returnName());
-        //
-        //     function addThree(num){
-        //         return num + 3;
-        //     }
-        //
-        //     console.log(addThree(5));
-        //
-        //     function sayString(inputString){
-        //         return inputString;
-        //     }
-        //
-        //     console.log(sayString('Hello'));
-        //
-        //     function sayHowdy(){
-        //         console.log('Howdy');
-        //     }
-        //     sayHowdy();
-        //
-        //
-        //     function identity(input){
-        //         return input;
-        //     }
-        //
-        //     function getRandomNumber(min, max){
-        //         var output = 0;
-        //         output = (max * Math.random()) + min;
-        //         return output;
-        //     }
-        //
-        //     function first(input) {
-        //         return input.charAt(0);
-        //     }
-        //
-        //     console.log(first('hey'));
-        //
-        //     function last(input) {
-        //         return input.charAt(input.length - 1);
-        //     }
-        //
-        //     console.log(last('hey friend'));
-        //
-        //     function rest(input){
-        //         return input.substring(2, input.length - 1);
-        //     }
-        //
-        //     function reverse(input) {
-        //         return input.reverse();
-        //     }
-        //
-        //     function isNumeric(input) {
-        //         return !isNaN(input);
-        //     }
-        //
-        //     function count(input) {
-        //         return input.length;
-        //     }
-        //
-        //     function add(a, b){
-        //         return a + b;
-        //     }
-        //
-        //     function subtract(a, b){
-        //         return a - b;
-        //     }
-        //
-        //     function multiply(a, b){
-        //         return a * b;
-        //     }
-        //
-        //     function divide(numerator, denominator){
-        //         return numerator / denominator;
-        //     }
-        //
-        //     function remainder(number, divisor){
-        //         return number % divisor;
-        //     }
-        //
-        //     function square(a){
-        //         return a * a;
-        //     }
+            function returnTwo(){
+                return 2;
+            }
+
+            console.log(returnTwo());
+
+            function returnName(){
+                return 'Maria';
+            }
+
+            console.log(returnName());
+
+            function addThree(num){
+                return num + 3;
+            }
+
+            console.log(addThree(5));
+
+            function sayString(inputString){
+                return inputString;
+            }
+
+            console.log(sayString('Hello'));
+
+            function sayHowdy(){
+                console.log('Howdy');
+            }
+            sayHowdy();
+
+
+            function identity(input){
+                return input;
+            }
+
+            function getRandomNumber(min, max){
+                var output = 0;
+                output = (max * Math.random()) + min;
+                return output;
+            }
+
+            function first(input) {
+                return input.charAt(0);
+            }
+
+            console.log(first('hey'));
+
+            function last(input) {
+                return input.charAt(input.length - 1);
+            }
+
+            console.log(last('hey friend'));
+
+            function rest(input){
+                return input.substring(2, input.length - 1);
+            }
+
+            function reverse(input) {
+                return input.reverse();
+            }
+
+            function isNumeric(input) {
+                return !isNaN(input);
+            }
+
+            function count(input) {
+                return input.length;
+            }
+
+            function add(a, b){
+                return a + b;
+            }
+
+            function subtract(a, b){
+                return a - b;
+            }
+
+            function multiply(a, b){
+                return a * b;
+            }
+
+            function divide(numerator, denominator){
+                return numerator / denominator;
+            }
+
+            function remainder(number, divisor){
+                return number % divisor;
+            }
+
+            function square(a){
+                return a * a;
+            }
         //
         // //    SUPER DUPER GOLD STAR
-        //     function sumOfSquares(a, b){
-        //     //    a^2 + b^2
-        //         add(square(a), square(b));
-        //     }
-        //
-        //     function doMath(operator, a, b){
-        //        return operator(a, b);
-        //     }
+            function sumOfSquares(a, b){
+            //    a^2 + b^2
+                add(square(a), square(b));
+            }
+
+            function doMath(operator, a, b){
+               return operator(a, b);
+            }
+
+        //TESTING THE FUNCTION
         //     console.log(doMath(divide, 1, 5));
         //
         //
         //
         //
         // //    FUNCTION DRILLS
-        //     function isOdd(number) {
-        //         var output = false;
-        //         if (number % 2 === 1)
-        //             output = true;
-        //         return output;
-        //     }
-        //
-        //     function isEven(number){
-        //         var output = false;
-        //         if (number % 2 === 0)
-        //             output = true;
-        //         return output;
-        //     }
-        //
-        //     function isFive(input) {
-        //         return (input === 5);
-        //     }
-        //
-        //     function isTrue(inputBoolean) {
-        //         return inputBoolean === true;
-        //     }
-        //
-        //     function isTruthy(input) {
-        //         return (!!input === true);
-        //     }
-        //
-        //     function isVowel(letter) {
-        //         var output = false;
-        //         output = (letter === 'a') || (letter === 'e') || (letter === 'i') || (letter === 'o') || (letter === 'u') || (letter === 'y');
-        //         return output;
-        //     }
-        //     function isConsonant(letter) {
-        //         var output = false;
-        //         output = !isVowel(letter);
-        //         return output;
-        //     }
-        //     function isBlank(input) {
-        //         var output = false;
-        //         output = (input === '\n') || (input === ' ') || (input === '\t');
-        //         return output;
-        //     }
-        //
+            function isOdd(number) {
+                var output = false;
+                if (number % 2 === 1)
+                    output = true;
+                return output;
+            }
+
+            function isEven(number){
+                var output = false;
+                if (number % 2 === 0)
+                    output = true;
+                return output;
+            }
+
+            function isFive(input) {
+                return (input === 5);
+            }
+
+            function isTrue(inputBoolean) {
+                return inputBoolean === true;
+            }
+
+            function isTruthy(input) {
+                return (!!input === true);
+            }
+
+            function isVowel(letter) {
+                var output = false;
+                output = (letter === 'a') || (letter === 'e') || (letter === 'i') || (letter === 'o') || (letter === 'u') || (letter === 'y');
+                return output;
+            }
+            function isConsonant(letter) {
+                var output = false;
+                output = !isVowel(letter);
+                return output;
+            }
+            function isBlank(input) {
+                var output = false;
+                output = (input === '\n') || (input === ' ') || (input === '\t');
+                return output;
+            }
+
+        //TESTING THE FUNCTION
         // console.log(isBlank(' '));
         // console.log(isBlank('\n'));
         //
-        //     function rollDice(sides) {
-        //         return Math.floor(Math.random() * sides + 1);
-        //     }
-        //
+            function rollDice(sides) {
+                return Math.floor(Math.random() * sides + 1);
+            }
+
+        //TESTING THE FUNCTION
         //     console.log(rollDice(6));
 
 
@@ -177,18 +181,97 @@
          * 1. TAKE IN A STRING INPUT
          * 2.
          */
-
+        //
         function numberOfWhiteSpaces(inputString) {
             var trimmedString = inputString.trim();
             var numWhiteSpaces = inputString.length - trimmedString.length;
             return numWhiteSpaces;
         }
-
-        console.log((numberOfWhiteSpaces('   total five  ')));;
+        //TESTING THE FUNCTION
+        // console.log((numberOfWhiteSpaces('   total five  ')));
 
         function doesStringOccur(firstString, secondString){
-
+            if(firstString.indexOf(secondString) >= 0) {
+                firstString = firstString.replace(secondString, '');
+            }
+            return firstString;
         }
+        //TESTING THE FUNCTION
+        // console.log(doesStringOccur('hello codeup', 'jeez'));
+
+
+        function isLastLetterA(inputString) {
+            inputString = inputString.trim();
+            return (inputString.charAt(inputString.length - 1) == 'a');
+        }
+
+
+
+        /**
+         * problem statement: create a function that will take in a string, find out how many white spaces
+         * are in the front, and return that numbers.
+         *
+         * pseudo code:
+         * TAKE any string
+         * IF trimmed string input = string then return 0
+         * ELSE use (/^\s/).exec(input) to create an array hold the match
+         * then use the length function on the array 0th element to return the number of whitespaces
+         */
+        function whiteSpacesInFront(input) {
+            var myRegex = /^\s+/;
+            var originalLength = input.length;
+            var modLength = (input.replace(myRegex, '')).length;
+            return originalLength - modLength;
+        }
+        //TESTING THE FUNCTION
+        // var testString = '\t\t\t\t\tFIVE TABS = OUTPUT OF FIVE';
+        // console.log(whiteSpacesInFront(testString));
+
+        /**
+         * problem statement:
+         * FIRST CREATE TWO FUNCTIONS: returnTrueMessage() and returnFalseMessage() that return a message saying its
+         * true and its false, respectively.
+         * CREATE THIRD FUNCTION that returns the call to the function passed
+         */
+
+        function returnTrueMessage() {
+            return 'Hey, it\'s true!';
+        }
+        function returnFalseMessage() {
+            return 'Hey, it\'s false!';
+        }
+        function returnMessage(inputFunction) {
+            return inputFunction();
+        }
+
+        console.log(returnMessage(returnFalseMessage));
+        console.log(returnMessage(returnTrueMessage));
+        // console.log(returnMessage(parseFloat));
+
+        /**
+         * problem statement: Take in username, password, age(number), and a boolean indication if they are an admin
+         * TEST IF admin
+         * IF TRUE: test to see if username and password are
+         * TEST IF username and password are different and age is above 18
+         *
+         */
+        function willLoginUser(usernameString, passwordString, ageNum, adminStatus) {
+            var loginValid = false;
+            if(usernameString !== passwordString){
+                if(adminStatus || ageNum >= 18) {
+                    loginValid = true;
+                }
+            }
+            return loginValid;
+        }
+        //TESTING THE FUNCTION
+        // console.log(willLoginUser('maria', 'james', 17, true));//should print true
+        // console.log(willLoginUser('maria', 'james', 18, false));//should print true
+        // console.log(willLoginUser('maria', 'james', 18, true));//should print true
+        // console.log(willLoginUser('maria', 'james', 17, false));//should print false
+        // console.log(willLoginUser('maria', 'maria', 18, true));//should print false
+
+
 
         </script>
     </body>
