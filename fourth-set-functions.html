@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fourth set functions</title>
+</head>
+<body>
+<!--
+    In this file, we simply do the JS inline because they are function drills.
+    For coding projects, js files will be linked to an external js file using src='path'
+-->
+<script>
+    function makeJustinMessage(name) {
+        if((name.match(/\s/) == null) && (name.match(/[0-9]/) == null)){
+            if(name === 'justin') {
+                return 'It\'s Justin!';
+            } else {
+                return 'It\'s not Justin';
+            }
+        } else {
+            return 'INVALID INPUT';
+        }
+    }
+
+    // TESTING THE FUNCTION
+    // var name = 'justin ';
+    // console.log(makeJustinMessage('aa   ')); //INVALID INPUT
+    // console.log(makeJustinMessage('justin')); //It's Justin
+    // console.log(makeJustinMessage('kslij123')); //INVALID INPUT
+    // console.log(makeJustinMessage('Kelly')); //It's not Justin
+    // console.log(name.match(/\s/));
+
+    function trafficLight(lightColor) {
+        lightColor = lightColor.toLowerCase();
+        switch(lightColor){
+            case 'green':
+                return 'GO!';
+            case 'yellow':
+                return 'SLOW DOWN!';
+            case 'red':
+                return 'STOP!';
+        }
+    }
+    
+    // TESTING FOR THE FUNCTION
+    // console.log(trafficLight('yellow'));
+    // console.log(trafficLight('red'));
+    // console.log(trafficLight('green'));
+
+    function identity(input) {
+        if(input === '' || input === undefined)
+            return 'no input provided';
+        else
+            return input;
+    }
+    
+    //TESTING THE FUNCTION
+    // console.log(identity(123));
+    // console.log(identity('Maria'));
+    // console.log(identity(''));
+    // console.log(identity());
+
+
+    /**
+     * problem statement: Take in an input that is either a string representing a number or a number. If the number is longer
+     * than 1, return that there are too many numbers. Else, return a string depending on what the number is.
+     *
+     * PSEUDO CODE:
+     * 1.CHECK the input is not a NaN IF valid proceed, ELSE end function and return 'invalid input'
+     * 2.IF input is a string, turn it into a string ELSE turn input into a string
+     * 4.IF input is length of 1, proceed to the messages
+     * 5.depending on the message return a specific message
+     * 6.ELSE return 'too many digits'
+     */
+    // console.log(isNaN(''));
+    // console.log(isNaN(true));
+
+    function numberMessage(input){
+        input = parseFloat(input);
+        input = input.toString().trim();
+        if(input.match(/[0-9]/) >= 0 && !isNaN(input)){
+            // console.log(input);
+            // console.log(typeof input);
+            // console.log(input.length);
+            if(input.length == 1){
+                input = parseFloat(input);
+                switch (input) {
+                    case 0:
+                        return 'Zero is the loneliest number';
+                    case 1:
+                        return 'One is the loneliest number';
+                    case 2:
+                        return 'Two can be as bad as one, but no number is as lonely as one';
+                    case 3:
+                        return 'Third time is the the lucky charm';
+                    case 4:
+                        return 'Four is chill';
+                    case 5:
+                        return 'Five is okay I guess';
+                    case 6:
+                        return 'This is te 6th message I\'ve typed';
+                    case 7:
+                        return 'This is the 7th message I\'ve typed';
+                    case 8:
+                        return 'This is the 8th message I\'ve typed';
+                    case 9:
+                        return 'This is the 9th message I\'ve typed';
+                }
+            } else{
+                return 'Too many digits';
+            }
+
+        }else {
+            return 'invalid input';
+        }
+    }
+    //TESTING THE FUNCTION
+    // console.log(numberMessage('  1  ')); //one is the loneliest number
+    // console.log(numberMessage('1234')); //too many numbers
+    // console.log(numberMessage(123)); //too many numbers
+    // console.log(numberMessage('')); //invalid input
+    // console.log(numberMessage(1)); //one is the loneliest number
+
+    /**
+     * problem statement:
+     * Take input from a user that is the full or abbreviated spelling of a week day name and return
+     * a message about that day of the week. Catch any spellings that do not indicate a week day name.
+     *
+     * PSEUDO CODE:
+     * 1. TURN input into lowercase
+     * 2. MATCH to see if input is the abbreviated or long version
+     * 3. DEPENDING on the day, RETURN a special message
+     * 4. ELSE IF not one of those spellings, return that the input is invalid
+     */
+
+    function dayMessage(input) {
+        input = input.toLowerCase();
+        if(input === 'monday' || input === 'mon'){
+            return 'Today is monday';
+        } else if(input === 'tuesday' || input === 'tue'){
+            return 'Today is tuesday';
+        } else if(input === 'wednesday' || input === 'wed'){
+            return 'Today is wednesday';
+        } else if(input === 'thursday' || input === 'thurs'){
+            return 'Today is thursday';
+        } else if(input === 'friday' || input === 'fri'){
+            return 'Today is friday';
+        } else if(input === 'saturday' || input === 'sat'){
+            return 'Today is saturday, or caturday';
+        } else if(input === 'sunday' || input === 'sun'){
+            return 'Today is sunday';
+        } else{
+            return 'invalid input';
+        }
+    }
+    //FUNCTION TESTING
+    // console.log(dayMessage('Sunday')); //Today is Sunday
+    // console.log(dayMessage('sun')); //today is sunday
+    // console.log(dayMessage('1234')); //invalid input
+
+    /**
+     * problem statement: take in an input and let user know if it is a number or not a number with an alert
+     *
+     * PSEUDO CODE:
+     * 1. IF not a number, alert the user that the input is not a number
+     * 2. ELSE alert the user that the input is a number
+     */
+
+    function isNotANumber(input) {
+        if(isNaN(input)){
+            alert('The input is not a number');
+        } else{
+            alert('The input is a number!');
+        }
+    }
+
+    function isNotANumber(input){
+        var output = (isNaN(input)) ? alert('The input is not a number') : alert('The input is a number!');
+        return output;
+    }
+
+    // console.log(isNotANumber('5'));
+    // console.log(isNotANumber(3));
+    // console.log(isNotANumber('akdldl'));
+
+    /**
+     * problem statement: prompt the user for the name of a season nad then alert them
+     * the months available in that season. prompt the user to pick one of the given months.
+     * after the month has been selected, alert a message about that month. If user input is invalid,
+     * alert the user, case doesn't matter, and accept full and abbreviated spellings of the month names.
+     *
+     * PSEUDO CODE:
+     * 1. PROMPT for the name of a season
+     * 2. ALERT user of available months in that season
+     * 3. PROMPT user for the name of one of those months
+     * 4. MATCH month input to return a month specific message
+     *
+     */
+
+    function seasonsAndMonths() {
+        var season = prompt('Enter the name of a season \(Spring, Summer, Fall or Autumn, or Winter\)');
+        var month;
+        if (isNaN(season)){
+            season = season.toLowerCase();
+            if (season === 'spring') {
+                alert('Months available in Spring are: March, April, and May');
+                month = prompt('Enter one of the months in Spring:');
+                month = month.toLowerCase();
+                if (month === 'mar' || month === 'march') {
+                    alert('it\'s march');
+                } else if (month === 'apr' || month === 'april') {
+                    alert('it\'s april');
+                } else if (month === 'may') {
+                    alert('it\'s may');
+                } else {
+                    alert('invalid');
+                }
+            } else if (season === 'summer') {
+                alert('Months available in Summer are: June, July, and August');
+                month = prompt('Enter one of the months in Summer:');
+                month = month.toLowerCase();
+                if (month === 'jun' || month === 'june') {
+                    alert('it\'s june');
+                } else if (month === 'jul' || month === 'july') {
+                    alert('it\'s july');
+                } else if (month === 'aug' || month === 'august') {
+                    alert('it\'s august');
+                } else {
+                    alert('invalid');
+                }
+            } else if (season === 'fall' || season === 'autumn') {
+                alert('Months available in Fall or Autumn are: September, October, and November');
+                month = prompt('Enter one of the months in Fall:');
+                month = month.toLowerCase();
+                if (month === 'sept' || month === 'september') {
+                    alert('it\'s september');
+                } else if (month === 'oct' || month === 'october') {
+                    alert('it\'s october');
+                } else if (month === 'nov' || month === 'november') {
+                    alert('it\'s november');
+                } else {
+                    alert('invalid');
+                }
+            } else if (season === 'winter') {
+                alert('Months available in Winter are: December, January, and February');
+                month = prompt('Enter one of the months in Winter:');
+                month = month.toLowerCase();
+                if (month === 'dec' || month === 'december') {
+                    alert('it\'s december');
+                } else if (month === 'jan' || month === 'january') {
+                    alert('it\'s january');
+                } else if (month === 'feb' || month === 'february') {
+                    alert('it\'s february');
+                } else {
+                    alert('invalid');
+                }
+            } else{
+                alert('Sorry that\'s not the name of a month.');
+            }
+        } else{
+            alert('invalid input');
+        }
+    }
+
+    seasonsAndMonths();
+
+</script>
+</body>
+</html>
