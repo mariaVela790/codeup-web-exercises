@@ -13,8 +13,15 @@ var number = parseFloat(prompt('Enter a number between 1 and 50:'));
 
 for(var i = 1; i <= 50; i++){
     if(i === number){
+        console.log('Yikes! Skipping number: ' + i);
         continue;
     }
-    console.log(i);
+    if(i % 2 === 0){
+        console.log('Here is an even number: ' + i);
+    } else{
+        console.log('Here is an odd number: ' + i);
+    }
+
+
 }
 
