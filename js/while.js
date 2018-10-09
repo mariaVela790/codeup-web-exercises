@@ -1,8 +1,8 @@
-// var num = 2;
-// while(num <= 65536){
-//     console.log(num);
-//     num *= 2;
-// }
+var num = 2;
+while(num <= 65536){
+    console.log(num);
+    num *= 2;
+}
 
 
 //ice cream program

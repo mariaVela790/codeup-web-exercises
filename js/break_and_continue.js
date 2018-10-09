@@ -3,7 +3,7 @@
 var number;
 do{
     number = prompt('Enter a number between 1 and 50');
-    if(number >= 1 && number <= 50){
+    if(number > 1 && number <  50){
         break;
     }
 }while(true);
