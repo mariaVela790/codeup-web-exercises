@@ -1,8 +1,8 @@
-var num = 2;
-while(num <= 65536){
-    console.log(num);
-    num *= 2;
-}
+// var num = 2;
+// while(num <= 65536){
+//     console.log(num);
+//     num *= 2;
+// }
 
 
 //ice cream program
@@ -28,7 +28,9 @@ var allCones = Math.floor(Math.random() * 50) + 50;
 do{
     var numOfCones = Math.floor(Math.random() * 5) + 1;
     if(numOfCones <= allCones){
+        console.log('I have ' + allCones + ' right now');
         allCones = allCones - numOfCones;
+        console.log('you bought ' + numOfCones + ' I have ' + allCones + ' left');
         if(allCones === 0){
             console.log('Yay! I sold them all!');
         }
