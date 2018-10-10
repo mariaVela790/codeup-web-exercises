@@ -1,18 +1,26 @@
+"use strict";
+const CANVAS_BORDER_COLOR = 'black';
+const CANVAS_BACKGROUND_COLOR = 'white';
+
+var gameCanvas = document.getElementById('gameCanvas');//good
+var ctx = gameCanvas.getContext('2d');
+
+ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+ctx.strokeStyle = CANVAS_BORDER_COLOR;
+
+ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+
 var snakeSize = 10;
 var width = 400;
 var height = 400;
 var score = 0;
 var snake;
 var food;
-const CANVAS_BORDER_COLOR = 'black';
-const CANVAS_BACKGROUND_COLOR = 'white';
 
-var myCanvas = document.getElementById('myCanvas');//good
-var ctx = myCanvas.getContext('2d');
 
-ctx.fillStyle(0, 0, myCanvas.width, myCanvas.height);
-ctx.strokeRect(0, 0, myCanvas.width, myCanvas.height);
-
+//PRESSED ALT + ENTER TO CONVERT TO ECMA 6
 let snake = [
     {x: 200, y: 200},
     {x: 190, y: 200},

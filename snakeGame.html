@@ -12,41 +12,39 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-
-        <!--ROW GAME AS A WHOLE-->
-        <div class="row  mx-auto">
-            <div class="col-12">
-                <!--GAME TITLE-->
-                <div class="row">
-                    <div class="col-11 m-auto">
-                        <h1>The Snake Game</h1>
-                    </div>
-                </div>
-                <!--CANVAS-->
-                <div class="row">
-                    <div class="col-12">
-                        <canvas id="myCanvas" width="400" height="400" >
-
-                        </canvas>
-                    </div>
-                </div>
-                <!--START BUTTON-->
-                <div class="row">
-                    <div class="col-11 m-auto">
-                        <p>
-                            Press start and eat the pizza!
-                            <button id="btn" type="button" class="btn btn-primary">START</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <canvas id="'gameCanvas" width="300" height="300"></canvas>
 
 
+    <!--<div class="container-fluid">-->
 
+        <!--&lt;!&ndash;ROW GAME AS A WHOLE&ndash;&gt;-->
+        <!--<div class="row  mx-auto">-->
+            <!--<div class="col-12">-->
+                <!--&lt;!&ndash;GAME TITLE&ndash;&gt;-->
+                <!--<div class="row">-->
+                    <!--<div class="col-11 m-auto">-->
+                        <!--<h1>The Snake Game</h1>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;CANVAS&ndash;&gt;-->
+                <!--<div class="row">-->
+                    <!--<div class="col-12">-->
+                        <!--<canvas id="myCanvas" width="400" height="400" >-->
 
-
+                        <!--</canvas>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;START BUTTON&ndash;&gt;-->
+                <!--<div class="row">-->
+                    <!--<div class="col-11 m-auto">-->
+                        <!--<p>-->
+                            <!--Press start and eat the pizza!-->
+                            <!--<button id="btn" type="button" class="btn btn-primary">START</button>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
 
 
@@ -55,15 +53,34 @@
 
 
 
-    </div><!--CLOSE CONTAINER -->
 
 
 
+
+
+    <!--</div>&lt;!&ndash;CLOSE CONTAINER &ndash;&gt;-->
+
+
+<script>
+    const CANVAS_BORDER_COLOR = 'black';
+    const CANVAS_BACKGROUND_COLOR = 'white';
+
+    const gameCanvas = document.getElementById('gameCanvas');//good
+    const ctx = gameCanvas.getContext("2d");
+
+    ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+    ctx.strokestyle = CANVAS_BORDER_COLOR;
+
+    ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+    ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+
+</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/settings-js.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--<script src="js/settings-js.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
 </body>
 </html>
