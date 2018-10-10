@@ -35,7 +35,7 @@
      * TODO:
      * Refactor your above code to use a `forEach` loop
      */
-    names.forEach(function(element, index, array){
+    names.forEach(function(element){
         console.log(element);
     });
     /**
@@ -51,17 +51,17 @@
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
-    function returnFirstElement(array){
+    function first(array){
         return array[0];
     }
-    function returnSecondElement(array){
+    function second(array){
         return array[2];
     }
-    function returnLastElement(array){
+    function last(array){
         return array[array.length - 1];
     }
 
-    console.log(returnFirstElement(names));
-    console.log(returnSecondElement(names));
-    console.log(returnLastElement(names));
+    console.log(first(names));
+    console.log(second(names));
+    console.log(last(names));
 })();
