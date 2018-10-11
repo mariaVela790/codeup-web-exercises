@@ -100,10 +100,14 @@ console.log(testArray);
 //   getRandomQuote should generate a random number between 0 and the array's length minus 1
 //   use the randomly generated number as your index
 //   return a random quote.
-function getRandomQuote() {
-    
+var quoteArray = ['its a marathon not a race', 'every journey begins with a step', 'sun will come out tomorrow', 'hang in there'];
+
+function getRandomQuote(quoteArray) {
+    randomIndex = Math.ceil(Math.random() * (quoteArray.length - 1));
+    return quoteArray[randomIndex];
 }
 
+console.log(getRandomQuote(quoteArray));
 
 // Exercise 8. Write a function named getIndexesOf() that takes in two arguments.
 // The first argument should be a specific numeral or character
@@ -111,3 +115,33 @@ function getRandomQuote() {
 // getIndexesOf() should return an array containing all of the indexes of that character in the string
 // Example: getIndexesOf("a", "banana") should return the array [1, 3, 5]
 // Example: getIndexesOf("z", "banana") should return an empty array []
+
+/**
+ * problem statement: take in a character and an array and return the indices of the character in the array
+ * as a set of arrays
+ */
+
+function getIndexesOf(character, strInput) {
+    var outputArray = [];
+    var inputAsArray = strInput.split('');
+    inputAsArray.forEach(function(){
+
+    })
+    return outputArray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
