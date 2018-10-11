@@ -188,14 +188,6 @@ var salesReport = {
 salesReport.getEmployeeCount = function () {
     return this.employees.length;
 };
-//
-// function getTotalNumberOfSales(salesReport) {
-//     var totalSales = 0;
-//     salesReport.employees.forEach(function (element) {
-//         totalSales += parseFloat(element.salesUnits);
-//     });
-//     return totalSales;
-// }
 
 salesReport.getTotalNumberOfSales = function () {
     var totalSales = 0;
@@ -205,11 +197,14 @@ salesReport.getTotalNumberOfSales = function () {
     return totalSales;
 };
 
-function getAverageSalesPerEmployee(){
-
-}
+salesReport.getAverageSalesPerEmployee = function (){
+    var numberOfEmployees = this.getEmployeeCount();
+    var total = this.getTotalNumberOfSales();
+    return total / numberOfEmployees;
+};
 
 console.log(salesReport.getTotalNumberOfSales());
+console.log(salesReport.getAverageSalesPerEmployee());
 
 // Exercise 4. Go to https://gist.githubusercontent.com/ryanorsinger/f77e5ec94dbe14e21771/raw/d4a1f916723ca69ac99fdcab48746c6682bf4530/profiles.json
 // then copy the JSON and assign it to a variable named profiles.
