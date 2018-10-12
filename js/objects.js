@@ -12,8 +12,8 @@
      *  > console.log(person.lastName) // "Sanchez"
      */
     var person = {
-        "firstName" : "Maria",
-        "lastName": "Vela"
+        firstName : "Maria",
+        lastName : "Vela"
     };
     console.log(person.firstName);
     console.log(person.lastName);
@@ -29,12 +29,27 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
     person.sayHello = function(){
-        return "Hello " + this.firstName + " " + this.lastName;
+        return "Hello from " + this.firstName + " " + this.lastName;
     };
     console.log(person.sayHello());
 
 
-    /** TODO: done
+    //The following is an example of why it is helpful to use the keyword this
+    //the reason for this is that the this keyword simply refers to the object assigned
+    //the method so we can assign it to multiple objects to avoid typing the same code.
+    function sayGreeting() {
+        return 'Hello from ' + this.firstName + ' ' + this.lastName;
+    }
+
+    var person1 = {
+        firstName : "Maria",
+        lastName : "Vela"
+    };
+    person1.sayHello = sayGreeting;
+    console.log(person1.sayHello());
+
+
+/** TODO: done
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
      * discount. Write a JS program, using conditionals, that logs to the
@@ -54,17 +69,42 @@
         {name: 'George', amount: 320}
     ];
 
-    var discount = .12;
-    shoppers.forEach(function (element) {
-        var output = element.name + ' bought $' + element.amount;
-        if(element.amount >= 200){
-            output += ' and thus receives a discount of '
-                + discount + ' and will only pay '
-                + (element.amount * (1 - discount));
-        }
-        console.log(output);
-    });
+    //
+    // var discount = .12;
+    // shoppers.forEach(function (element) {
+    //     var output = element.name + ' bought $' + element.amount;
+    //     if(element.amount >= 200){
+    //         output += ' and thus receives a discount of '
+    //             + discount + ' and will only pay '
+    //             + (element.amount * (1 - discount));
+    //     }
+    //     console.log(output);
+    // });
 
+    function calcDiscount(amount){
+        var finalAmount = amount;
+        var amountOff = 0;
+
+        if(amount > 200){
+            amountOff = amount * .12;
+            finalAmount = amount - amountOff;
+        }
+
+        return {
+            finalAmount: finalAmount,
+            amountOff: amountOff
+        };
+    }
+    function displayShopperInfo(shoppers) {
+        shoppers.forEach(function(shopper) {
+            var amount = calcDiscount(shopper.amount);
+            var output = shopper.name + ' bought $' + (shopper.amount).toFixed(2);
+            output += ' and got ' + (amount.amountOff).toFixed(2);
+            output += ' off and will pay $' + (amount.finalAmount).toFixed(2);
+            console.log(output);
+        });
+    }
+    displayShopperInfo(shoppers);
 
     /** TODO: done
      * Create an array of objects that represent books and store it in a
@@ -117,9 +157,9 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
-    console.log(books[0].title) // "Fahrenheit 451"
-    console.log(books[0].author.firstName) // "Ray"
-    console.log(books[0].author.lastName) // "Bradbury"
+    console.log(books[0].title);// "Fahrenheit 451"
+    console.log(books[0].author.firstName); // "Ray"
+    console.log(books[0].author.lastName); // "Bradbury"
 
 
     /**
@@ -131,10 +171,11 @@
      * - author's full name (first name + last name)
      */
     books.forEach(function(element, index){
-        console.log('Book # ' + (index + 1));
-        console.log('Title: ' + element.title);
-        console.log('Author: ' + element.author.firstName + ' ' + element.author.lastName);
-
+        var message = 'Book # ' + (index + 1) + '\n';
+        message += 'Title: ' + element.title + '\n';
+        message += 'Author: ' + element.author.firstName + ' ' + element.author.lastName + '\n';
+        message += '---';
+        console.log(message);
     });
 
 
