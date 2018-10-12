@@ -16,7 +16,7 @@
     var detonationTimer = 5;
 
     // TODO: This function needs to be called once every second DONE
-    var bomId = setInterval(function updateTimer() {
+    function updateTimer() {
         if (detonationTimer == 0) {
             alert('EXTERMINATE!');
             document.body.innerHTML = '';
@@ -25,7 +25,8 @@
         }
 
         detonationTimer--;
-    }, 1000);
+    }
+    var bomId = setInterval(updateTimer, 1000);
 
     // TODO: When this function runs, it needs to
     // cancel the interval/timeout for updateTimer()
