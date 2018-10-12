@@ -1,0 +1,22 @@
+/* CSS files add styling rules to your content */
+
+body {
+    font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+    margin: 2em;
+}
+
+h1 {
+    font-style: italic;
+    color: #373fff;
+}
+
+
+button {
+    height: 3em;
+    font-size: 2em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 5em;
+}

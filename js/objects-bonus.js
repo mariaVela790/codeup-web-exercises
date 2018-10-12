@@ -50,129 +50,129 @@ function makeCar(make, model) {
 // 11, Arthur Herbert, Fonzarelli, 23
 // 12, Betty, Boop, 67
 
-        // function formatDate(){
-        //     var today = new Date();
-        //     var dd = today.getDate();
-        //     var mm = today.getMonth() + 1; //January is 0!
-        //     var yyyy = today.getFullYear();
-        //
-        //     if (dd < 10) {
-        //         dd = '0' + dd;
-        //     }
-        //
-        //     if (mm < 10) {
-        //         mm = '0' + mm;
-        //     }
-        //
-        //     return today = mm + '/' + dd + '/' + yyyy;
-        //
-        // }
-        //
-        // function createEmployee() {
-        //     var employee = {};
-        //     employee.employeeNumber = prompt('Enter employee number: ');
-        //     employee.firstName = prompt('Enter employee first name:');
-        //     employee.lastName = prompt('Enter employee last name:');
-        //     employee.salesUnits = prompt('Enter employee sales units:');
-        //     return employee;
-        // }
-        //
-        // function createSalesReport(){
-        //     var salesReport = {};
-        //     salesReport.title = 'Monthly Sales Report';
-        //     salesReport.date = formatDate();
-        //     salesReport.office = prompt('Enter the office name: ');
-        //     salesReport.employees = [];
-        //
-        //     var addEmployee = false;
-        //     do{
-        //         employees.push(createEmployee());
-        //         addEmployee = confirm('Do you wish to add another employee? ');
-        //
-        //     }while(addEmployee);
-        //     return salesReport;
-        //
-        // }
+function formatDate(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
 
-// function formatSalesReport() {
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        return today = mm + '/' + dd + '/' + yyyy;
+
+    }
+
+    function createEmployee() {
+        var employee = {};
+        employee.employeeNumber = prompt('Enter employee number: ');
+        employee.firstName = prompt('Enter employee first name:');
+        employee.lastName = prompt('Enter employee last name:');
+        employee.salesUnits = prompt('Enter employee sales units:');
+        return employee;
+    }
+
+    function createSalesReport(){
+        var salesReport = {};
+        salesReport.title = 'Monthly Sales Report';
+        salesReport.date = formatDate();
+        salesReport.office = prompt('Enter the office name: ');
+        salesReport.employees = [];
+
+        var addEmployee = false;
+        do{
+            employees.push(createEmployee());
+            addEmployee = confirm('Do you wish to add another employee? ');
+
+        }while(addEmployee);
+        return salesReport;
+
+    }
+
+function formatSalesReport() {
+
+}
+
+// var salesReport = {
 //
-// }
-
-var salesReport = {
-
-        title: "Monthly Sales Report",
-        date: "03-17-2016",
-        office: "Codeup",
-        employees: [
-            {
-                employeeNumber: 1 ,
-                firstName: "Jane",
-                lastName: "Janeway",
-                salesUnits: 3
-            },
-            {
-                employeeNumber: 3,
-                firstName: "Tricia" ,
-                lastName: "Triciason",
-                salesUnits: 5
-            },
-            {
-                employeeNumber: 4,
-                firstName: "Jeanette",
-                lastName: "Jeanson",
-                salesUnits: 4
-            },
-            {
-                employeeNumber: 5,
-                firstName: "Charles Emerson III",
-                lastName: "Winchester",
-                salesUnits: 2
-            },
-            {
-                employeeNumber: 6,
-                firstName: "Chet",
-                lastName: "Chedderson",
-                salesUnits: 8
-            },
-            {
-                employeeNumber: 7,
-                firstName: "Chaim",
-                lastName: "Chaiamson",
-                salesUnits: 12
-            },
-            {
-                employeeNumber: 8,
-                firstName: "Dale",
-                lastName: "Dalesinger",
-                salesUnits: 1
-            },
-            {
-                employeeNumber: 9,
-                firstName: "Zig",
-                lastName: "Ziglar",
-                salesUnits: 50
-            },
-            {
-                employeeNumber: 10,
-                firstName: "Henry",
-                lastName: "Kissinger",
-                salesUnits: 1
-            },
-            {
-                employeeNumber: 11,
-                firstName: "Arthur",
-                lastName: "Fonzarelli",
-                salesUnits: 23
-            },
-            {
-                employeeNumber: 12,
-                firstName: "Betty",
-                lastName: "Boop",
-                salesUnits: 67
-            },
-        ]
-
-    };
+//         title: "Monthly Sales Report",
+//         date: "03-17-2016",
+//         office: "Codeup",
+//         employees: [
+//             {
+//                 employeeNumber: 1 ,
+//                 firstName: "Jane",
+//                 lastName: "Janeway",
+//                 salesUnits: 3
+//             },
+//             {
+//                 employeeNumber: 3,
+//                 firstName: "Tricia" ,
+//                 lastName: "Triciason",
+//                 salesUnits: 5
+//             },
+//             {
+//                 employeeNumber: 4,
+//                 firstName: "Jeanette",
+//                 lastName: "Jeanson",
+//                 salesUnits: 4
+//             },
+//             {
+//                 employeeNumber: 5,
+//                 firstName: "Charles Emerson III",
+//                 lastName: "Winchester",
+//                 salesUnits: 2
+//             },
+//             {
+//                 employeeNumber: 6,
+//                 firstName: "Chet",
+//                 lastName: "Chedderson",
+//                 salesUnits: 8
+//             },
+//             {
+//                 employeeNumber: 7,
+//                 firstName: "Chaim",
+//                 lastName: "Chaiamson",
+//                 salesUnits: 12
+//             },
+//             {
+//                 employeeNumber: 8,
+//                 firstName: "Dale",
+//                 lastName: "Dalesinger",
+//                 salesUnits: 1
+//             },
+//             {
+//                 employeeNumber: 9,
+//                 firstName: "Zig",
+//                 lastName: "Ziglar",
+//                 salesUnits: 50
+//             },
+//             {
+//                 employeeNumber: 10,
+//                 firstName: "Henry",
+//                 lastName: "Kissinger",
+//                 salesUnits: 1
+//             },
+//             {
+//                 employeeNumber: 11,
+//                 firstName: "Arthur",
+//                 lastName: "Fonzarelli",
+//                 salesUnits: 23
+//             },
+//             {
+//                 employeeNumber: 12,
+//                 firstName: "Betty",
+//                 lastName: "Boop",
+//                 salesUnits: 67
+//             },
+//         ]
+//
+//     };
 
 // var salesReport1 = createSalesReport();
 
