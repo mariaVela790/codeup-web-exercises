@@ -24,18 +24,14 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
-<button id="btn1">JavaScript is Cool</button>
-<button id="btn2">Turn sub header blue!</button>
-<button id="btn3">Make every other li grey and first one blue!</button>
-<button id="btn4">Make paragraph say something cool!</button>
+<button id="changeMainHeader">JavaScript is Cool</button>
+<button id="changeSubHeader">Turn sub header blue!</button>
+<button id="changeUL">Make every other li grey and first one blue!</button>
+<button id="changeParagraph">Make paragraph say something cool!</button>
 
 <script>
     // (function() {
         "use strict";
-        var mainHeader = document.getElementById('main-header');
-        var subHeader = document.getElementById('sub-header');
-        var listItems = document.getElementsByTagName('li');
-        var subParagraphs = document.querySelector('.sub-paragraph');
 
 
 
@@ -94,13 +90,14 @@
          * apply an add event listener for that button
          */
 
-        var btn1 = document.getElementById('btn1');
-        var btn2 = document.getElementById('btn2');
-        var btn3 = document.getElementById('btn3');
-        var btn4 = document.getElementById('btn4');
+        var changeMainHeaderBtn = document.getElementById('changeMainHeader');
+        var changeSubHeaderBtn = document.getElementById('changeSubHeader');
+        var changeULBtn = document.getElementById('changeUL');
+        var changeParagraphBtn = document.getElementById('changeParagraph');
 
 
         function changeMainHeader() {
+            var mainHeader = document.getElementById('main-header');
             if(mainHeader.innerHTML !== 'JavaScript is Cool'){
                 mainHeader.innerHTML = 'JavaScript is Cool';
             } else {
@@ -111,6 +108,7 @@
 
 
         function changeSubHeaderTextColor() {
+            var subHeader = document.getElementById('sub-header');
             if(subHeader.style.color !== 'blue'){
                 subHeader.style.color = 'blue';
             } else {
@@ -125,6 +123,7 @@
          * if the item is gray or blue when the button is clicked, remove style
          */
         function changeLiAndDbid() {
+            var listItems = document.getElementsByTagName('li');
             for(var i = 0; i < listItems.length; i += 1){
                 if (listItems[i].style.color !== 'blue' && listItems[i].style.color !== 'gray') {
                     if (listItems[i].getAttribute('data-dbid') === '1') {
@@ -140,6 +139,7 @@
 
 
         function changeSubParagraph() {
+            var subParagraphs = document.querySelector('.sub-paragraph');
             if (subParagraphs.innerText !== 'Mission Accomplished!') {
                 subParagraphs.innerText = 'Mission Accomplished!';
             } else {
@@ -154,12 +154,12 @@
         }
 
 
-        btn1.addEventListener('click', changeMainHeader);
-        btn2.addEventListener('click', changeSubHeaderTextColor);
-        btn3.addEventListener('click', changeLiAndDbid);
-        btn4.addEventListener('click', changeSubParagraph);
+        changeMainHeaderBtn.addEventListener('click', changeMainHeader);
+        changeSubHeaderBtn.addEventListener('click', changeSubHeaderTextColor);
+        changeULBtn.addEventListener('click', changeLiAndDbid);
+        changeParagraphBtn.addEventListener('click', changeSubParagraph);
 
-
+        //here goes the newer code that is directly affecting the page functionality with JS
 
     /**
     ================================= DOM BONUSES
