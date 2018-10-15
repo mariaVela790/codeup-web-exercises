@@ -46,21 +46,92 @@
 
         // TODO: Set text color on every other list item to grey
         // TODO: Set text color of li with dbid = 1 to blue
-        for(var i = 0; i < listItems.length; i += 2){
-            listItems[i].style.backgroundColor = 'gray';
-            if(listItems[i].getAttribute('data-dbid') === '1'){
+        for(var i = 0; i < listItems.length; i += 1){
+            // console.log(typeof listItems[i].getAttribute('data-dbid'));
+            if (listItems[i].getAttribute('data-dbid') === '1') {
                 listItems[i].style.color = 'blue';
+            } else if(i % 2 === 0){
+                listItems[i].style.color = 'gray';
             }
-
         }
+
+        // var listItemsArray = Array.from(listItems);
+        // listItemsArray.forEach(function (listItem, index) {
+        //     if (listItem.getAttribute('data-dbid') === '1') {
+        //         listItem.style.color = 'blue';
+        //     }
+        //     if(i % 2 === 0){
+        //         listItems[i].style.color = 'gray';
+        //     }
+        // });
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         var subParagraphs = document.querySelector('.sub-paragraph');
+        // console.log(subParagraphs);
         // var subParagraphs = document.('.sub-paragraph');
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs.innerText = 'Mission Accomplished!';
+    /**
+    ================================= DOM BONUSES
+    Complete the following in a file called "dom-bonuses.html"...
 
+    BONUS 1 (grocery list APP)
+    Allow the user to enter a certain number of items and then display them on the page.
+    - for each item, prompt the user for the name of the item, and store in an array of items.
+    - for each item in the array of items create a new li element with the correct text and
+     append to the DOM
+    - for a simpler alternative, build an entire HTML string and set the innerHTML of an
+     existing <ul> element
+
+     problem statement: Have user enter a given number of grocery items and then display
+     those items on the page
+
+     PSEUDO CODE:
+     1. LOOP through to prompt the user for the name of the item and then store that response
+     in an array of grocery items
+
+     2. loop through the array of grocery items and for each item, create a list item
+
+     3. Add the string to the html document
+     */
+
+    function createGroceryList(numberOfListItems){
+
+        //code to create and add each element
+        // for(var i = 0; i < numberOfListItems; i++){
+        //     var p = document.createElement("p");
+        //     var newContent = document.createTextNode("Hi there and greetings!");
+        //     p.appendChild(newContent);
+        //     document.body.appendChild(p);
+        // }
+        var groceryItems = [];
+        var listItem
+        for(var i = 0; i < numberOfListItems; i++){
+
+        }
+    }
+    createGroceryList(4);
+
+    /**
+     BONUS 2 (custom styling)
+    In the same dom-bonuses.html page, allow the user to select custom styling for the page by
+     setting the background color, font color, and font-family for the page. Add additional style
+     changes to have fun and experiment!
+
+    BONUS 3 (profile create form)
+    Create a form that will allow the user to enter the following information in text inputs:
+        firstName
+    lastName
+    username
+    email
+    address
+    age
+    shortBio
+    Create a function, createUserProfileDiv() that when run will grab all data in the form inputs and
+     build a div with the user's entered information and append it to the page. Test it by running it
+     in the JS console.
+    */
     })();
 </script>
 </body>
