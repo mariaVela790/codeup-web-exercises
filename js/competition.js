@@ -98,6 +98,8 @@ console.log(transformStr('r@lokd 0tsots*'));
 console.log(transformStr('gzoox gz11nvddm!'));
 
 
+
+
 var prod;
 var prodStr;
 var prodRevArray;

@@ -29,6 +29,39 @@
 <button id="changeUL">Make every other li grey and first one blue!</button>
 <button id="changeParagraph">Make paragraph say something cool!</button>
 
+<!-- firstName
+    lastName
+    username
+    email
+    address
+    age
+    shortBio
+    -->
+
+<form action="">
+
+    <label for="firstName">First Name: </label>
+    <input id="firstName" type="text">
+
+    <label for="lastName">Last Name: </label>
+    <input id="lastName" type="text">
+
+    <label for="username">Username: </label>
+    <input id="username" type="text">
+
+    <label for="email">Email: </label>
+    <input id="email" type="email">
+
+    <label for="age">Age: </label>
+    <input id="age" type="number">
+
+    <label for="shortBio">Bio: </label>
+    <textarea id="shortBio"></textarea>
+
+
+
+</form>
+
 <script>
     // (function() {
         "use strict";
@@ -76,90 +109,90 @@
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
 
 
-        /**
-         * 1. button 1: change inner text of button 1 to 'JavaScript is Cool'
-         * 2. button 2: set text color of sub-header to blue
-         * 3. button 3: set text color of every other list item to grey and
-         *    set text color of li with data-dbid = 1 to blue
-         * 4. button 4: change the first sub paragraph to 'Mission Accomplished!'
-         *
-         * PSEUDO CODE:
-         * create functions to do desired actions
-         * assign ids to the buttons
-         * grab buttons by the id and assign a var
-         * apply an add event listener for that button
-         */
-
-        var changeMainHeaderBtn = document.getElementById('changeMainHeader');
-        var changeSubHeaderBtn = document.getElementById('changeSubHeader');
-        var changeULBtn = document.getElementById('changeUL');
-        var changeParagraphBtn = document.getElementById('changeParagraph');
-
-
-        function changeMainHeader() {
-            var mainHeader = document.getElementById('main-header');
-            if(mainHeader.innerHTML !== 'JavaScript is Cool'){
-                mainHeader.innerHTML = 'JavaScript is Cool';
-            } else {
-                mainHeader.innerHTML = 'Hello Again.';
-            }
-
-        }
-
-
-        function changeSubHeaderTextColor() {
-            var subHeader = document.getElementById('sub-header');
-            if(subHeader.style.color !== 'blue'){
-                subHeader.style.color = 'blue';
-            } else {
-                subHeader.removeAttribute('style');
-            }
-        }
-
-        /**
-         * pseudo code:
-         * loop through the htmlcollection
-         * check to make sure an element is not gray or not blue
-         * if the item is gray or blue when the button is clicked, remove style
-         */
-        function changeLiAndDbid() {
-            var listItems = document.getElementsByTagName('li');
-            for(var i = 0; i < listItems.length; i += 1){
-                if (listItems[i].style.color !== 'blue' && listItems[i].style.color !== 'gray') {
-                    if (listItems[i].getAttribute('data-dbid') === '1') {
-                        listItems[i].style.color = 'blue';
-                    } else if (i % 2 === 0) {
-                        listItems[i].style.color = 'gray';
-                    }
-                } else{
-                    listItems[i].removeAttribute('style');
-                }
-            }
-        }
-
-
-        function changeSubParagraph() {
-            var subParagraphs = document.querySelector('.sub-paragraph');
-            if (subParagraphs.innerText !== 'Mission Accomplished!') {
-                subParagraphs.innerText = 'Mission Accomplished!';
-            } else {
-                subParagraphs.innerText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do' +
-                    ' eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim' +
-                    ' ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
-                    ' aliquip ex ea commodo consequat. Duis aute irure dolor in' +
-                    ' reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla' +
-                    ' pariatur. Excepteur sint occaecat cupidatat non proident, sunt in' +
-                    ' culpa qui officia deserunt mollit anim id est laborum.';
-            }
-        }
-
-
-        changeMainHeaderBtn.addEventListener('click', changeMainHeader);
-        changeSubHeaderBtn.addEventListener('click', changeSubHeaderTextColor);
-        changeULBtn.addEventListener('click', changeLiAndDbid);
-        changeParagraphBtn.addEventListener('click', changeSubParagraph);
-
-        //here goes the newer code that is directly affecting the page functionality with JS
+        // /**
+        //  * 1. button 1: change inner text of button 1 to 'JavaScript is Cool'
+        //  * 2. button 2: set text color of sub-header to blue
+        //  * 3. button 3: set text color of every other list item to grey and
+        //  *    set text color of li with data-dbid = 1 to blue
+        //  * 4. button 4: change the first sub paragraph to 'Mission Accomplished!'
+        //  *
+        //  * PSEUDO CODE:
+        //  * create functions to do desired actions
+        //  * assign ids to the buttons
+        //  * grab buttons by the id and assign a var
+        //  * apply an add event listener for that button
+        //  */
+        //
+        // var changeMainHeaderBtn = document.getElementById('changeMainHeader');
+        // var changeSubHeaderBtn = document.getElementById('changeSubHeader');
+        // var changeULBtn = document.getElementById('changeUL');
+        // var changeParagraphBtn = document.getElementById('changeParagraph');
+        //
+        //
+        // function changeMainHeader() {
+        //     var mainHeader = document.getElementById('main-header');
+        //     if(mainHeader.innerHTML !== 'JavaScript is Cool'){
+        //         mainHeader.innerHTML = 'JavaScript is Cool';
+        //     } else {
+        //         mainHeader.innerHTML = 'Hello Again.';
+        //     }
+        //
+        // }
+        //
+        //
+        // function changeSubHeaderTextColor() {
+        //     var subHeader = document.getElementById('sub-header');
+        //     if(subHeader.style.color !== 'blue'){
+        //         subHeader.style.color = 'blue';
+        //     } else {
+        //         subHeader.removeAttribute('style');
+        //     }
+        // }
+        //
+        // /**
+        //  * pseudo code:
+        //  * loop through the htmlcollection
+        //  * check to make sure an element is not gray or not blue
+        //  * if the item is gray or blue when the button is clicked, remove style
+        //  */
+        // function changeLiAndDbid() {
+        //     var listItems = document.getElementsByTagName('li');
+        //     for(var i = 0; i < listItems.length; i += 1){
+        //         if (listItems[i].style.color !== 'blue' && listItems[i].style.color !== 'gray') {
+        //             if (listItems[i].getAttribute('data-dbid') === '1') {
+        //                 listItems[i].style.color = 'blue';
+        //             } else if (i % 2 === 0) {
+        //                 listItems[i].style.color = 'gray';
+        //             }
+        //         } else{
+        //             listItems[i].removeAttribute('style');
+        //         }
+        //     }
+        // }
+        //
+        //
+        // function changeSubParagraph() {
+        //     var subParagraphs = document.querySelector('.sub-paragraph');
+        //     if (subParagraphs.innerText !== 'Mission Accomplished!') {
+        //         subParagraphs.innerText = 'Mission Accomplished!';
+        //     } else {
+        //         subParagraphs.innerText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do' +
+        //             ' eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim' +
+        //             ' ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
+        //             ' aliquip ex ea commodo consequat. Duis aute irure dolor in' +
+        //             ' reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla' +
+        //             ' pariatur. Excepteur sint occaecat cupidatat non proident, sunt in' +
+        //             ' culpa qui officia deserunt mollit anim id est laborum.';
+        //     }
+        // }
+        //
+        //
+        // changeMainHeaderBtn.addEventListener('click', changeMainHeader);
+        // changeSubHeaderBtn.addEventListener('click', changeSubHeaderTextColor);
+        // changeULBtn.addEventListener('click', changeLiAndDbid);
+        // changeParagraphBtn.addEventListener('click', changeSubParagraph);
+        //
+        // //here goes the newer code that is directly affecting the page functionality with JS
 
     /**
     ================================= DOM BONUSES
@@ -233,9 +266,25 @@
 
      problem statement: prompt the user to enter the style they want
      */
-
-
-
+    //
+    // var body = document.getElementsByTagName('body')[0];
+    //
+    // function changeBackground() {
+    //     var backgroundColor = prompt('Enter a color for the background:');
+    //     body.style.backgroundColor = backgroundColor;
+    // }
+    // function changeFontColor(){
+    //     var fontColor = prompt('Enter a color you want for the font:');
+    //     body.style.color = fontColor;
+    // }
+    // function changeFontFamily(){
+    //     var fontFamily = prompt('Enter a font name:');
+    //     body.style.fontFamily = fontFamily;
+    // }
+    //
+    // changeBackground();
+    // changeFontColor();
+    // changeFontFamily();
 
     /**
     BONUS 3 (profile create form)
@@ -250,7 +299,13 @@
     Create a function, createUserProfileDiv() that when run will grab all data in the form inputs and
      build a div with the user's entered information and append it to the page. Test it by running it
      in the JS console.
+    */
 
+
+
+
+
+    /**
      ================================= DOM EVENT BONUSES
      BONUS 1 - create a stop watch app
      1) stop watch display that shows the time to the nearest 100th of a second
