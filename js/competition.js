@@ -66,36 +66,36 @@ console.log(dnaMatch('ATCGA'));
 console.log(dnaMatch('TTGAG'));
 
 
-//////////////////////////////////////////////////////////
-function transformStr(strInput) {
-    var inputArr = strInput.split('');
-    var elementNum;
-    var newElemNum;
-    for (var i = 0; i < inputArr.length; i++){
-        if(inputArr[i].match(/[a-z]/) !== -1){
-            elementNum = inputArr[i].charCodeAt(0);
-            newElemNum = elementNum + 1;
-            inputArr[i] = String.fromCharCode(newElemNum);
-            console.log(inputArr[i]);
-
-            if (inputArr[i] === 'a' || inputArr[i] === 'i' ||inputArr[i] === 'e' ||inputArr[i] === 'u' || inputArr[i] === 'o' ) {
-                inputArr[i] = inputArr[i].toUpperCase();
-                console.log(inputArr[i].toUpperCase());
-
-            }
-        }
-    }
-    var output = inputArr.join('');
-    return output;
-
-}
-
-
-// var s = 'A';
-// console.log(s.charCodeAt(0));
-// console.log(String.fromCharCode(65));
-console.log(transformStr('r@lokd 0tsots*'));
-console.log(transformStr('gzoox gz11nvddm!'));
+// //////////////////////////////////////////////////////////
+// function transformStr(strInput) {
+//     var inputArr = strInput.split('');
+//     var elementNum;
+//     var newElemNum;
+//     for (var i = 0; i < inputArr.length; i++){
+//         if(inputArr[i].match(/[a-z]/) !== -1){
+//             elementNum = inputArr[i].charCodeAt(0);
+//             newElemNum = elementNum + 1;
+//             inputArr[i] = String.fromCharCode(newElemNum);
+//             console.log(inputArr[i]);
+//
+//             if (inputArr[i] === 'a' || inputArr[i] === 'i' ||inputArr[i] === 'e' ||inputArr[i] === 'u' || inputArr[i] === 'o' ) {
+//                 inputArr[i] = inputArr[i].toUpperCase();
+//                 console.log(inputArr[i].toUpperCase());
+//
+//             }
+//         }
+//     }
+//     var output = inputArr.join('');
+//     return output;
+//
+// }
+//
+//
+// // var s = 'A';
+// // console.log(s.charCodeAt(0));
+// // console.log(String.fromCharCode(65));
+// console.log(transformStr('r@lokd 0tsots*'));
+// console.log(transformStr('gzoox gz11nvddm!'));
 
 
 
@@ -108,18 +108,23 @@ var i;
 var j;
 
 function findPalindrome(){
+    var max = 998001;
+    for (i = 999, j = 999; i >= 100 && j >= 100; i--, j--) {
 
-    for (i = 999; i >= 100; i--) {
-        for (j = 999; j >= 100; j--) {
-            prod = i * j;
-            prodStr = prod.toString();
-            prodRevArray = prodStr.split('').reverse();
-            prodRev = prodRevArray.join('');
-            if (prodStr === prodRev) {
-                console.log(i * j);
-                return [i, j];
-            }
+        prod = i * j;
+
+        prodStr = prod.toString();
+        prodRevArray = prodStr.split('').reverse();
+        prodRev = prodRevArray.join('');
+        console.log(prodStr === prodRev);
+        if (prodStr === prodRev) {
+            // console.log(i * j);
+            max = i * j;
+            return [i, j];
         }
+        // for (j = 999; j >= 100; j--) {
+        //
+        // }
 
     }
 }
