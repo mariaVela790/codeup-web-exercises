@@ -98,37 +98,70 @@ console.log(dnaMatch('TTGAG'));
 // console.log(transformStr('gzoox gz11nvddm!'));
 
 
+/**
+ * problem statement: find the biggest three digit numbers that result in
+ * a palindrome when multiplied.
+ */
 
-
-var prod;
+var product;
 var prodStr;
 var prodRevArray;
 var prodRev;
 var i;
 var j;
+var outputStr = [];
 
 function findPalindrome(){
-    var max = 998001;
-    for (i = 999, j = 999; i >= 100 && j >= 100; i--, j--) {
+    var min = 999 * 999;
+    for (i = 999 ; i >= 100 ; i--) {
+    //we choose to try numbers from i to i - 100 because it allows us to try a set of big numbers but outside of this
+    // range we begin trying numbers that become significantly smaller which skews the goal of the function
+    //
+        for (j = i; j > i - 100; j--) {
+            product = i * j;
+            //turn the product of the two numbers into a string array to reverse it and then
+            // compare the original product and the reversed product
 
-        prod = i * j;
+            console.log(product + ' ' + j + ' ' +  i);
+            // console.log(prodStr === prodRev);
+            //Below we check to see if the strings are the same and if they are we return that value
+            if (isPalindrome(product)) {
+                // console.log(i * j);
+                // max = i * j;
+                return [i, j];
 
-        prodStr = prod.toString();
-        prodRevArray = prodStr.split('').reverse();
-        prodRev = prodRevArray.join('');
-        console.log(prodStr === prodRev);
-        if (prodStr === prodRev) {
-            // console.log(i * j);
-            max = i * j;
-            return [i, j];
+
+            }
         }
-        // for (j = 999; j >= 100; j--) {
-        //
-        // }
 
     }
 }
 
+function findPali() {
+    var max = 0;
+    for(var i = 100; i < 1000; i++){
+        for (var j = 100; j < 1000; j++){
+            product = i * j;
+            if(isPalindrome(product) && (product > max)){
+                max = product;
+
+                console.log(i + ' ' + j);
+                // console.log(j);
+            }
+        }
+    }
+    return [i, j];
+}
+
+function isPalindrome(product){
+    prodStr = product.toString();
+    prodRevArray = prodStr.split('').reverse();
+    prodRev = prodRevArray.join('');
+    return (prodStr === prodRev);
+}
+
+console.log(isPalindrome(2190));
+console.log(isPalindrome(9009));
 console.log(findPalindrome());
 
 
