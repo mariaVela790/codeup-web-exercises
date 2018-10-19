@@ -60,6 +60,7 @@ console.log(filterNumbers([3, 5]));
      dogs.forEach(function (dog) {
          dog.name += 1;
      });
+     return dogs;
  }
 
  /**
@@ -110,6 +111,7 @@ console.log(filterNumbers([3, 5]));
      cars.forEach(function (car) {
          car.isDirty = false;
      });
+     return cars;
  }
 
 
@@ -147,6 +149,7 @@ console.log(filterNumbers([3, 5]));
     email: 'user2@email.com'
   }
  ]*/
+
  var users = [
      {
          isAdmin: true,
@@ -172,6 +175,26 @@ console.log(filterNumbers([3, 5]));
      });
      return counter;
  }
+
+function adminList(users) {
+    var adminUsersEmails = [];
+    users.forEach(function (user) {
+        if(user.isAdmin){
+            adminUsersEmails.push(user.email);
+        }
+    });
+    return adminUsers;
+}
+
+function adminList(users) {
+    var adminUsers = [];
+    users.forEach(function (user) {
+        if(user.isAdmin){
+            adminUsers.push(user);
+        }
+    });
+    return adminUsers;
+}
 
  /**
  ------------- PRACTICE 5
@@ -213,10 +236,10 @@ console.log(filterNumbers([3, 5]));
  ]
  */
 function makeSandwhichObjects(breads, fillings) {
-    var sandwhiches = {};
+    var sandwiches = {};
     breads.forEach(function (breadType, index) {
-       sandwhiches.bread = breadType;
-       sandwhiches.filling = fillings[index];
+       sandwiches.bread = breadType;
+       sandwiches.filling = fillings[index];
     });
-    return sandwhiches;
+    return sandwiches;
  }
