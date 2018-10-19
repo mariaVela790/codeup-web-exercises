@@ -153,6 +153,8 @@ function findPali() {
     return [i, j];
 }
 
+for(var j = 999; j >= i - 100; j++)
+
 function isPalindrome(product){
     prodStr = product.toString();
     prodRevArray = prodStr.split('').reverse();
