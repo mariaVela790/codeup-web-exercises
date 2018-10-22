@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konami Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/konami-custom.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Konami Code</h1>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-lg-6 card border-0">
+                <img class="card-img-top p-3 konami-image mx-auto " style='width: 25vw;' src="img/gif/how-you-doin-cooking.gif" alt="joey tribbianni">
+                <div class="card-body">
+                    <h5>Card Title</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Deserunt dolor dolorem doloribus et excepturi expedita explicabo
+                        facilis illum incidunt iste libero minus nisi quos recusandae
+                        reprehenderit sint tenetur veniam, voluptates.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 card border-0">
+                <img class="card-img-top p-3 konami-image " src="img/gif/how-you-doin-eyebrows.gif" alt="joey tribbianni">
+                <div class="card-body">
+                    <h5>Card Title</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Deserunt dolor dolorem doloribus et excepturi expedita explicabo
+                        facilis illum incidunt iste libero minus nisi quos recusandae
+                        reprehenderit sint tenetur veniam, voluptates.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4 card border-0">
+                <img class=" display-none card-img-top p-3 konami-image d-none" src="img/gif/how-you-doin1.webp" alt="joey tribbianni">
+                <tag class="card-body">
+                    <h5>Card Title</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Deserunt dolor dolorem doloribus et excepturi expedita explicabo
+                        facilis illum incidunt iste libero minus nisi quos recusandae
+                        reprehenderit sint tenetur veniam, voluptates.
+                    </p>
+                </tag>
+            </div>
+            <div class="col-12 col-lg-4 card border-0">
+                <img class=" display-none card-img-top p-3 konami-image d-none" src="img/gif/how-you-doin-window.gif" alt="joey tribbianni">
+                <tag class="card-body">
+                    <h5>Card Title</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Deserunt dolor dolorem doloribus et excepturi expedita explicabo
+                        facilis illum incidunt iste libero minus nisi quos recusandae
+                        reprehenderit sint tenetur veniam, voluptates.
+                    </p>
+                </tag>
+            </div>
+            <div class="col-12 col-lg-4 card border-0">
+                <img class=" display-none card-img-top p-3 konami-image d-none" src="img/gif/how-you-doin-subtitle.gif" alt="joey tribbianni">
+                <tag class="card-body">
+                    <h5>Card Title</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Deserunt dolor dolorem doloribus et excepturi expedita explicabo
+                        facilis illum incidunt iste libero minus nisi quos recusandae
+                        reprehenderit sint tenetur veniam, voluptates.
+                    </p>
+                </tag>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        "use strict";
+
+        //ArrowUp
+        //ArrowUp
+        //ArrowDown
+        //ArrowDown
+        //ArrowLeft
+        //ArrowRight
+        //ArrowLeft
+        //ArrowRight
+        //KeyB
+        //KeyA
+        //Enter
+        var konamiCode = 'ArrowUp'
+            + ' ArrowUp'
+            + ' ArrowDown'
+            + ' ArrowDown'
+            + ' ArrowLeft'
+            + ' ArrowRight'
+            + ' ArrowLeft'
+            + ' ArrowRight'
+            + ' KeyB'
+            + ' KeyA'
+            + ' Enter';
+
+        var userCode = '';
+
+
+        var userInput = [];
+        var konamiArr = konamiCode.split(' ');
+
+
+        $(document).keyup(function (event){
+            if (event.originalEvent.code !== 'MetaLeft') {
+            console.log(event.originalEvent.code);
+                // console.log(event.originalEvent.code);
+                userInput.push(event.originalEvent.code);
+
+                for(var i = 0; i < userInput.length; i++){
+                    if(userInput[i] !== konamiArr[i]){
+                        console.log(userInput);
+                        userInput = [];
+                        break;
+                    } else if(i === konamiArr.length - 1){
+                        /////////Code executed when konami code is executed/////
+                        // console.log(userInput);
+                        // alert('You got the konami code!');
+                        //add d-none class to konami-image class elements
+                        $('.konami-image').removeClass('d-none');
+
+                    }
+
+                }
+            }
+        });
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
