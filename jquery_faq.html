@@ -149,9 +149,20 @@ When any list item is clicked, first li of the parent ul should have a font colo
             $(this).toggleClass('highlight');
         });
 
+        
         $('.highlight-last-li').click(function () {
-            $('ul').children().last().css('background', 'yellow');
+            $('ul').each(function () {
+                $(this).children().last().css('background', 'yellow');
+            });
         });
+
+        $('h3').click(function () {
+            $(this).next().children().css('font-weight', 'bold');
+        });
+
+        $('li').click(function () {
+            $(this).parent().children().first().css('color', 'blue');
+        })
 
 
     });
