@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Park FAQs</title>
+    <style>
+        .invisible{
+            display: none;
+        }
+        .highlight{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<dl>
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Ab accusamus alias assumenda deserunt dolor eveniet facilis hic, illo ipsum
+        laboriosam nisi officia officiis, praesentium reiciendis sequi tempore tempo
+        ribus vel voluptate.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Assumenda consequuntur dolorum earum expedita explicabo harum illum ipsum it
+        aque, mollitia omnis, possimus quas, quia quisquam quo reiciendis rem verita
+        tis! Magni, modi.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Ab accusamus alias assumenda deserunt dolor eveniet facilis hic, illo ipsum
+        laboriosam nisi officia officiis, praesentium reiciendis sequi tempore tempo
+        ribus vel voluptate.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Assumenda consequuntur dolorum earum expedita explicabo harum illum ipsum it
+        aque, mollitia omnis, possimus quas, quia quisquam quo reiciendis rem verita
+        tis! Magni, modi.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Aliquid, consequatur corporis doloremque ducimus ea eaque ex explicabo, fugi
+        at illum incidunt magni maiores nihil optio porro quibusdam reiciendis repud
+        iandae saepe sequi.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Animi commodi deserunt ducimus ea id labore perspiciatis rem tenetur veritat
+        is voluptatem? Consequuntur corporis eligendi laboriosam mollitia odio quae
+        vel. Corporis, sapiente.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Ab accusamus alias assumenda deserunt dolor eveniet facilis hic, illo ipsum
+        laboriosam nisi officia officiis, praesentium reiciendis sequi tempore tempo
+        ribus vel voluptate.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Assumenda consequuntur dolorum earum expedita explicabo harum illum ipsum it
+        aque, mollitia omnis, possimus quas, quia quisquam quo reiciendis rem verita
+        tis! Magni, modi.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Aliquid, consequatur corporis doloremque ducimus ea eaque ex explicabo, fugi
+        at illum incidunt magni maiores nihil optio porro quibusdam reiciendis repud
+        iandae saepe sequi.</dd>
+
+    <dt>Lorem Ipsum</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Animi commodi deserunt ducimus ea id labore perspiciatis rem tenetur veritat
+        is voluptatem? Consequuntur corporis eligendi laboriosam mollitia odio quae
+        vel. Corporis, sapiente.</dd>
+</dl>
+<button class="toggle-dd">Toggle Definitions</button>
+
+<script src="js/jquery.js"></script>
+<script>
+    "use strict";
+
+    $('.toggle-dd').click(function () {
+        $('dd').toggleClass('invisible');
+    });
+
+    $('dt').click(function () {
+      $(this).toggleClass('highlight');
+    });
+
+</script>
+
+</body>
+</html>
