@@ -1,5 +1,19 @@
-gif-image{
+.gif-image{
     /*width: auto;*/
     height: 20vh;
+    object-fit: cover;
+}
 
+.container{
+    width: 100%;
+}
+
+.thumbnail-titles{
+    text-align: center;
+    font-family: 'Amatic SC', cursive, Palatino LT STD,Book Antiqua,Georgia,serif;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.middle-top-picture{
+    height: 29.5em;
 }
