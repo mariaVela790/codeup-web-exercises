@@ -1,0 +1,27 @@
+.invisible{
+    display: none;
+}
+.highlight{
+    background: yellow;
+}
+
+.frame{
+    width: 15em;
+    height: 15em;
+}
+
+.frame1{
+    background-image: url("../img/cacti-decoration.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.frame2{
+    background-image: url("../img/apartment-kitchen.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.frame3{
+    background-image: url("../img/apartment-with-library.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
