@@ -77,16 +77,83 @@
 </dl>
 <button class="toggle-dd">Toggle Definitions</button>
 
+<h3>National Park 1</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
+
+<h3>National Park 2</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
+
+
+<h3>National Park 3</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
+<button class="highlight-last-li">Highlight Last List Item</button>
+<!--
+Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.
+
+Create a button that, when clicked, makes the last li in each ul have a yellow background.
+
+When any h3 is clicked, the lis underneath it should be bolded. Use font-weight: bold to achieve this.
+
+When any list item is clicked, first li of the parent ul should have a font color of blue.
+-->
+
 <script src="js/jquery.js"></script>
 <script>
     "use strict";
 
-    $('.toggle-dd').click(function () {
-        $('dd').toggleClass('invisible');
-    });
+    $(document).ready(function () {
+        $('.toggle-dd').click(function () {
+            $('dd').toggleClass('invisible');
+        });
 
-    $('dt').click(function () {
-      $(this).toggleClass('highlight');
+        $('dt').click(function () {
+            $(this).toggleClass('highlight');
+        });
+
+        $('.highlight-last-li').click(function () {
+            $('ul').children().last().css('background', 'yellow');
+        });
+
+
     });
 
 </script>
