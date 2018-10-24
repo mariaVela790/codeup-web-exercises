@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<div>
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span id="quit">X</span>
+</div>
+
+<h2>Register with us today!</h2>
+
 <!--<dl>-->
     <!--<dt>Lorem Ipsum</dt>-->
     <!--<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
@@ -72,55 +79,55 @@
 <!--</dl>-->
 <!--<button class="toggle-dd">Toggle Definitions</button>-->
 
-<!--<h3>National Park 1</h3>-->
-<!--<ul>-->
-    <!--<li>-->
-        <!--Fact One-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Two-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Three-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Four-->
-    <!--</li>-->
-<!--</ul>-->
+<h3>National Park 1</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
 
-<!--<h3>National Park 2</h3>-->
-<!--<ul>-->
-    <!--<li>-->
-        <!--Fact One-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Two-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Three-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Four-->
-    <!--</li>-->
-<!--</ul>-->
+<h3>National Park 2</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
 
 
-<!--<h3>National Park 3</h3>-->
-<!--<ul>-->
-    <!--<li>-->
-        <!--Fact One-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Two-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Three-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--Fact Four-->
-    <!--</li>-->
-<!--</ul>-->
-<!--<button class="highlight-last-li">Highlight Last List Item</button>-->
+<h3>National Park 3</h3>
+<ul>
+    <li>
+        Fact One
+    </li>
+    <li>
+        Fact Two
+    </li>
+    <li>
+        Fact Three
+    </li>
+    <li>
+        Fact Four
+    </li>
+</ul>
+<button class="highlight-last-li">Highlight Last List Item</button>
 <!--DONE
 
 Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.
@@ -238,13 +245,16 @@ When any list item is clicked, first li of the parent ul should have a font colo
 </div>
 
 <script src="js/jquery.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script>
     "use strict";
 
+    $('ul').hide();
+    $('h2').hide();
     $(document).ready(function () {
+
         $('.toggle-dd').click(function () {
             $('dd').toggleClass('invisible');
         });
@@ -259,10 +269,10 @@ When any list item is clicked, first li of the parent ul should have a font colo
                 $(this).children().last().css('background', 'yellow');
             });
         });
-
-        $('h3').click(function () {
-            $(this).next().children().css('font-weight', 'bold');
-        });
+        //
+        // $('h3').click(function () {
+        //     $(this).next().children().css('font-weight', 'bold');
+        // });
 
         $('li').click(function () {
             $(this).parent().children().first().css('color', 'blue');
@@ -305,6 +315,23 @@ When any list item is clicked, first li of the parent ul should have a font colo
             $('.frame3').children().removeClass(frame3Image).addClass(frame2Image);
             $('.frame2').children().removeClass(frame2Image).addClass(frame3Image);
         });
+
+        $('#quit').click(function () {
+           $(this).parent().hide();
+        });
+
+        $('h3').click(function () {
+            console.log($(this).next());
+            // $(this).next().toggle();
+            $(this).next().slideToggle();
+        });
+
+        setTimeout(function () {
+           $('h2').fadeIn();
+        }, 8000);
+
+
+
 
 
 // <!--
