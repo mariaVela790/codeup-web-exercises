@@ -6,21 +6,29 @@
 }
 
 .frame{
-    width: 15em;
+    width: 20em;
     height: 15em;
+    object-fit: cover;
+}
+.img1,
+.img2,
+.img3{
+    width: 20em;
+    height: 15em;
+    object-fit: cover;
 }
 
-.frame1{
+.img1{
     background-image: url("../img/cacti-decoration.jpg");
     background-size: contain;
     background-repeat: no-repeat;
 }
-.frame2{
+.img2{
     background-image: url("../img/apartment-kitchen.jpg");
     background-size: contain;
     background-repeat: no-repeat;
 }
-.frame3{
+.img3{
     background-image: url("../img/apartment-with-library.jpg");
     background-size: contain;
     background-repeat: no-repeat;
