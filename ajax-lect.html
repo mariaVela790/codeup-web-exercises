@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script src="js/jquery.js"></script>
+<script>
+    console.log('before');
+    $.ajax('https://frest.glitch.me/restaurants').done(function (data) {
+
+        console.error(data);
+        });
+    console.log('after');
+</script>
+</body>
+</html>
