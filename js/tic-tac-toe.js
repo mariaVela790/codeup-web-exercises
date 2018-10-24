@@ -19,24 +19,55 @@ $(document).ready(function () {
     var edgeLocations = ['12', '21', '23', '32'];
     var cornerLocations = ['11', '13', '31', '33'];
     var boardGame = {
-        id11 : '', id12 : '', id13 : '',
-        id21 : '', id22 : '', id23 : '',
-        id31 : '', id32 : '', id33 : '',
+        tile11 : '', tile12 : '', tile13 : '',
+        tile21 : '', tile22 : '', tile23 : '',
+        tile31 : '', tile32 : '', tile33 : '',
     };
+    var center = '22'
 
-    function playerWon(){
+    function centerWin(event, currentPlayer){
+        var validSecondMove = false;
+        // var secondX = $(event).attr('id');
+        // if(edgeLocations.indexOf($(event).attr('id'))){
+        //
+        // }
+        for(var i = 0; i < edgeLocations; i++){
+            if($(edgeLocations[i]).text() === currentPlayer && ){
+                // validSecondMove = true;
+                //call function for checking the third move by sending in
+                //the current edgeLocation[i]
+            } else if($(edgeLocations[i]).text() === currentPlayer){
+
+            }
+        }
 
     }
+
+    //The following function takes in the second move, when valid
+    //and check is the third move makes a win
+    function validThirdMove(secondLocation){
+
+    }
+
+
 
 
     $('.box').click(function () {
         var currentLocation = $(this).attr('id');
         if($(this).text() === '') {//makes sure the current box is empty before writing in it
-            $(this).text(players[i]);
+            var currentPlayer = players[i];
+            $(this).text(currentPlayer);
             boardGame['id' + currentLocation] = players[i];
             // console.log(boardGame);
 
+            if(currentLocation === center){
+            //    call function that checks for wins starting from center
 
+            } else if(edgeLocations.indexOf(currentLocation) > -1){
+            //    call function that checks for wins from edge
+            } else {
+            //    call function that checks for wins from corners
+            }
             //resetting i
             if (i === 1) {
                 i = 0;
