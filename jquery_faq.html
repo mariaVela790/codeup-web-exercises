@@ -277,13 +277,33 @@ When any list item is clicked, first li of the parent ul should have a font colo
             console.log(frame2Image);
 
             $('.frame1').children().removeClass(frame1Image).addClass(frame2Image);
-           $('.frame2').children().removeClass(frame2Image).addClass(frame1Image);
+            $('.frame2').children().removeClass(frame2Image).addClass(frame1Image);
         });
 
         $('.button2').click(function () {
-           var randomNum = Math.ceil(Math.random() * 3);
-            // console.log(randomNum);
+           var randomNum = Math.round(Math.random());
+            var frame1Image = $('.frame1').children().attr('class');
+            var frame2Image = $('.frame2').children().attr('class');
+            var frame3Image = $('.frame3').children().attr('class');
 
+            if(randomNum === 0){
+                //Swap frame 1 and frame 2
+                $('.frame1').children().removeClass(frame1Image).addClass(frame2Image);
+                $('.frame2').children().removeClass(frame2Image).addClass(frame1Image);
+            } else{
+                //Swap frame 2 and 3
+                $('.frame3').children().removeClass(frame3Image).addClass(frame2Image);
+                $('.frame2').children().removeClass(frame2Image).addClass(frame3Image);
+            }
+
+        });
+
+        $('.button3').click(function () {
+            var frame3Image = $('.frame3').children().attr('class');
+            var frame2Image = $('.frame2').children().attr('class');
+
+            $('.frame3').children().removeClass(frame3Image).addClass(frame2Image);
+            $('.frame2').children().removeClass(frame2Image).addClass(frame3Image);
         });
 
 
