@@ -8,13 +8,13 @@
     <link href="css/jquery_faq.css" rel="stylesheet">
 </head>
 <body>
+<h2 class="invisible" id="register-alert">Register with us today!</h2>
 
 <div>
     <h1>Would you like to sign up for our newsletter?</h1>
     <span id="quit">X</span>
 </div>
 
-<h2>Register with us today!</h2>
 
 <!--<dl>-->
     <!--<dt>Lorem Ipsum</dt>-->
@@ -80,7 +80,7 @@
 <!--<button class="toggle-dd">Toggle Definitions</button>-->
 
 <h3>National Park 1</h3>
-<ul>
+<ul class="invisible">
     <li>
         Fact One
     </li>
@@ -96,7 +96,7 @@
 </ul>
 
 <h3>National Park 2</h3>
-<ul>
+<ul class="invisible">
     <li>
         Fact One
     </li>
@@ -113,7 +113,7 @@
 
 
 <h3>National Park 3</h3>
-<ul>
+<ul class="invisible">
     <li>
         Fact One
     </li>
@@ -251,8 +251,8 @@ When any list item is clicked, first li of the parent ul should have a font colo
 <script>
     "use strict";
 
-    $('ul').hide();
-    $('h2').hide();
+    // $('ul').hide();
+    // $('h2').hide();
     $(document).ready(function () {
 
         $('.toggle-dd').click(function () {
@@ -327,7 +327,7 @@ When any list item is clicked, first li of the parent ul should have a font colo
         });
 
         setTimeout(function () {
-           $('h2').fadeIn();
+           $('#register-alert').fadeIn();
         }, 8000);
 
 
