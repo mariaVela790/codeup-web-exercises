@@ -23,23 +23,96 @@ $(document).ready(function () {
         tile21 : '', tile22 : '', tile23 : '',
         tile31 : '', tile32 : '', tile33 : '',
     };
-    var center = '22'
+    var center = '22';
 
-    function centerWin(event, currentPlayer){
-        var validSecondMove = false;
+    $('.box').click(function () {
+        var currentLocation = $(this).attr('id');
+        if($(this).text() === '') {//makes sure the current box is empty before writing in it
+            var currentPlayer = players[i];//improves readability
+
+            $(this).text(currentPlayer);
+            boardGame['id' + currentLocation] = currentPlayer;
+            // console.log(boardGame);
+            // console.log(playerWins(currentPlayer, currentLocation));
+            if(playerWins(currentPlayer, currentLocation)){
+                console.log(currentPlayer + ' wins');
+            }
+
+            //resetting i
+            if (i === 1) {
+                i = 0;
+            } else {
+                i++;
+            }
+
+        }
+    });
+
+    function playerWins(currentPlayer, currentLocation) {
+        var playerWon = false;
+
+        //the following checks what type of "first" move the player made
+        //to decide which method of winning they are going for
+
+        if(currentLocation === center){
+            console.log('checking for a center win in playerWins function');
+            //    call function that checks for wins starting from center
+            playerWon = centerWin(currentPlayer);
+
+        } else if(edgeLocations.indexOf(currentLocation) > -1){
+            //    call function that checks for wins from edge
+
+            //playerWon = edgeWin(currentPlayer);
+        } else {
+            //    call function that checks for wins from corners
+
+            //playerWon = cornerWin(currentPlayer);
+        }
+
+        return playerWon;
+    }
+
+    function centerWin(currentPlayer){
+        var centerWon = false;
+        var reversedEdgeLocation;
+
         // var secondX = $(event).attr('id');
         // if(edgeLocations.indexOf($(event).attr('id'))){
         //
         // }
-        for(var i = 0; i < edgeLocations; i++){
-            if($(edgeLocations[i]).text() === currentPlayer && ){
-                // validSecondMove = true;
+
+        for(var i = 0; i < edgeLocations.length; i++){
+            console.log('centerWin function loop');
+            //This for loop checks if the player has another 'move'
+            console.log('in centerWin function loop, current player is ' + currentPlayer);
+            var edgeLocationId = '#' + edgeLocations[i];
+            console.log('inner html for this edge box is' + $(edgeLocationId).text());
+            if($(edgeLocationId).text() === currentPlayer){//checks to see if the text at that id
+                console.log('in centerWin function loop if statement, current player is ' + currentPlayer);
+                //belongs to the same player
+                reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
+                //reverses matched edge id to see if the player got a straight row
+                if($(reversedEdgeLocation).text() === currentPlayer){
+                    console.log('row win');
+                    centerWon = true;//center wins because there is a perfect row
+
+                }
                 //call function for checking the third move by sending in
                 //the current edgeLocation[i]
-            } else if($(edgeLocations[i]).text() === currentPlayer){
+            } else if($(cornerLocations[i]).text() === currentPlayer){
+                reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
 
+                if(($(reversedEdgeLocation).text() === currentPlayer)
+                    || $('#11').text() === currentPlayer
+                    || $('#33').text() === currentPlayer){
+
+                    console.log('diagonal win');
+                    centerWon = true;//center wins because there is a perfect row
+
+                }
             }
         }
+        return centerWon;
 
     }
 
@@ -52,29 +125,6 @@ $(document).ready(function () {
 
 
 
-    $('.box').click(function () {
-        var currentLocation = $(this).attr('id');
-        if($(this).text() === '') {//makes sure the current box is empty before writing in it
-            var currentPlayer = players[i];
-            $(this).text(currentPlayer);
-            boardGame['id' + currentLocation] = players[i];
-            // console.log(boardGame);
-
-            if(currentLocation === center){
-            //    call function that checks for wins starting from center
-
-            } else if(edgeLocations.indexOf(currentLocation) > -1){
-            //    call function that checks for wins from edge
-            } else {
-            //    call function that checks for wins from corners
-            }
-            //resetting i
-            if (i === 1) {
-                i = 0;
-            } else {
-                i++;
-            }
-        }
 
         /**
          * problem statement: keep track of which boxes have Xs and Os and check if there is a match of three in a row
@@ -85,7 +135,6 @@ $(document).ready(function () {
          *
          */
 
-    });
 
 
 
