@@ -1,4 +1,5 @@
 "use strict";
+
 $(document).ready(function () {
     var people = [
         {
@@ -21,28 +22,29 @@ $(document).ready(function () {
      * added to the inner HTML of the div#names-list. For an extra bonus,
      * make the font color of each list item map to that person's favColor value.
      */
-
-
-    $('#add-names-btn').click(function () {
+    function createListHtml(peopleObjects){
         var outputStr = '<ul>';
         console.log('button works');
 
-       people.forEach(function (person) {
-          outputStr += '<li id="hello">' + person.name;
-          outputStr += '</li>';
+        peopleObjects.forEach(function (person) {
+            outputStr += '<li id="hello">' + personObjects.name;
+            outputStr += '</li>';
 
 
+        });
+        outputStr += '</ul>';
+        console.log(outputStr);
+        return outputStr;
+    }
+
+
+    $('#add-names-btn').click(function () {
+       $('#names-list').html(createListHtml(people));
+
+
+       $('li').each(function (index) {
+          $(this).css('color', people[index].favColor);
        });
-       outputStr += '</ul>';
-      console.log(outputStr);
-       $('#names-list').html(outputStr);
-
-       // $('li').each(function () {
-       //    // $('li').css('color', $)
-       //    //  console.log($('li'));
-       //     // $('li')
-       // });
-       // var array
 
     });
 
