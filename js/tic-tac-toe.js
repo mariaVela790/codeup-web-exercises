@@ -23,7 +23,9 @@ $(document).ready(function () {
         tile21 : '', tile22 : '', tile23 : '',
         tile31 : '', tile32 : '', tile33 : '',
     };
+    //iterate over an array of the rows to check for a win
     var center = '22';
+
 
     $('.box').click(function () {
         var currentLocation = $(this).attr('id');
@@ -46,6 +48,7 @@ $(document).ready(function () {
             }
 
         }
+        // console.log(typeof '#');
     });
 
     function playerWins(currentPlayer, currentLocation) {
@@ -86,6 +89,7 @@ $(document).ready(function () {
             //This for loop checks if the player has another 'move'
             console.log('in centerWin function loop, current player is ' + currentPlayer);
             var edgeLocationId = '#' + edgeLocations[i];
+
             console.log('inner html for this edge box is' + $(edgeLocationId).text());
             if($(edgeLocationId).text() === currentPlayer){//checks to see if the text at that id
                 console.log('in centerWin function loop if statement, current player is ' + currentPlayer);
