@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Weather Application</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 id="cityName"></h2>
+            </div>
+        </div>
+        <div class="row" id="weatherForecast">
+
+        </div>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready(function () {
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: "8453f337af4aae663eae6da20f638275",
+            q: "San Antonio, US",
+            units: "imperial"
+        }).done(function (data) {
+           makeForecast(data);
+        });
+
+        // console.log(Date.prototype.getDate());
+    });
+
+    function makeForecast(data) {
+        var numberOfForecastDays = 24;
+        console.log(data);
+        console.log(data.city.name);//grabs name from the request
+        $('#cityName').html(data.city.name);
+        $("#weatherForecast").html('');
+        // .append("<div class='row'>");
+        for(var i = 0; i < numberOfForecastDays; i += 8){
+            var dataList = data.list[i];
+            var forecastHtml = '';
+            var maxAndMin = findMaxAndMin(dataList, i);
+            var max = maxAndMin[0];
+            var min = maxAndMin[1];
+            var iconName = dataList.weather[0].icon;
+
+            forecastHtml += "<div class='col-4 border border-secondary text-center'>";
+            forecastHtml +=
+            forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"
+            forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather
+            forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
+            forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
+            forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
+            forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind
+            forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
+            forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
+            forecastHtml += "</div>";
+            $('#weatherForecast').append(forecastHtml);
+        }
+        // $("#weatherForecast").append("</div>");
+        $('.weatherSubTitles').addClass('capitalize');
+        $('.highAndLow').addClass('font-weight-bold')
+                        .css('font-size', '1.5em');
+    }
+
+    function findMaxAndMin(dataList, index) {
+        var currentMax = 0;
+        var currentMin = 200;
+        var dayMaxAndMin = [];
+        for(var j = index - 7; j <= index ; j++){
+            if(dataList.main.temp_max > currentMax){
+                currentMax = dataList.main.temp_max;
+                // console.log('new max');
+            }
+            if(dataList.main.temp_min < currentMin){
+               currentMin = dataList.main.temp_min;
+                // console.log('new min');
+            }
+        }
+        dayMaxAndMin.push(currentMax, currentMin);
+        return dayMaxAndMin;
+    }
+    /**
+     * problem statement:Find the max and the min temp for the day
+     *
+     * PSEUDO CODE:
+     * 1. For each data list in our for loop: cycle through starting from index - 7 and going to the index (including)
+     * 2. in each iteration, ask if the max temp is greater than the current max and if the min temp is smaller than the current min temp
+     */
+    // MAKE THE WEATHER FORECAST
+    // make a function to get the weather object from the OpenWeatherMap API
+    // base url should be "http://api.openweathermap.org/data/2.5/forecast"
+    // practice writing console.logs of various parts of the OpenWeatherMap object...
+    // console.log the current weather description
+    // console.log the humidity of the 2nd day
+    // console.log the humidity of all the days (use a for loop)
+    // console.log the temperature of the 3rd day in celsius
+    // console.log the temperature of the 3rd day in Fahrenheit
+    // console.log all types of information you will ultimately display for a single day in the 3-day forecast div
+    // console.log all type of information you will ultimately display for all days in the 3-day forecast divs
+    // write html and css to make/style a three-day forecast set of divs (may use design from curriculum)
+    // create a function to append specific parts of the OpenWeatherMap map object to the DOM and call it in the .done() of the OpenWeatherMap map GET request.
+    // remember to first console.log specific data from the OpenWeatherMap object, then work on adding to the DOM
+    // read and reread the curriculum and OpenWeatherMap docs carefully on how to get an image of the weather forecast
+    // hint: "http://openweathermap.org/img/w/" + whateverTheWeatherIconValueIs
+    // verify that the OpenWeatherMap data populates by hard coding in lat and lon values
+    // create lat and lon variables to hold lat and lon values.
+    // add lat and lon properties to the function that calls the OpenWeatheMap API GET request
+    // add an input field for lat and lon with button that fires a new request to the OpenWeatherMap API and passes the lat and lon values from the input fields into the request.
+
+
+
+
+    // CREATE THE MAP
+    // using syntax from the previous Maps exercise, add a map below the OpenWeatherMap forecast
+    // add a marker to the map and make it draggable
+    // create a marker drag event that console logs the lat and lon where the marker is dropped
+    // WIRE UP MAP TO WEATHER API
+    // add the function call that makes the Weather API request to the marker drag event and pass in the lat and lon values of the marker to the Weather API request function
+
+
+</script>
+</body>
+</html>
