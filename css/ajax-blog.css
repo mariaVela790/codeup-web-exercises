@@ -1,0 +1,4 @@
+.article-info-image{
+    /*background-image: url("i");*/
+    object-fit: cover;
+}
