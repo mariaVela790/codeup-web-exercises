@@ -9,7 +9,74 @@
 
 </head>
 <body>
-    <div id="posts"></div>
+    <div class="bg-white p-0">
+        <header>
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-4 text-info"><a href="#">Subscribe</a></div>
+                    <div class="col-4 text-center"><h1 id="blogHeader">Blog Title</h1></div>
+                    <div class="col-4 text-right"><button class="btn btn-outline-secondary">Sign Up</button></div>
+                </div>
+            </div>
+        </header>
+        <hr class="bg-dark m-0">
+        <!--BEGINNING OF NAV BAR-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white p-0 m-0">
+            <!--<a class="navbar-brand" href="#">Brand Name</a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarText">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">DESIGN</span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">HOUSE TOURS</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">ORGANIZING & CLEANING</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">WELLNESS</span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">PROJECTS</span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="navbar-text text-dark">LIFE </span><span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!--End of nav list-->
+
+        </nav>
+        <!--END OF NAVBAR-->
+
+
+    </div>
+    <!--END OF TOP BANNER-->
+
+    <div class="container">
+
+        <div class="jumbotron bg-info" id="latestPostLink">
+            <a href="#latestPost"><h1 id="latestPostTitle" class="text-light"></h1></a>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <h2 class="font-italic" id="blogTitle">Blog Title</h2>
+                <hr class="bg-secondary">
+                <div id="posts"></div>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+
+
+        div.
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -22,9 +89,17 @@
 
     function updateBlogPosts() {
         $.ajax("data/blog.json").done(function (blogData) {
-            blogData.forEach(function (blogEntryInfo) {
-                console.log(blogEntryInfo);
-                $("#posts").append(createBlogPost(blogEntryInfo));
+            $("#latestPostTitle").html("");
+            $("#posts").html("");
+
+            blogData.forEach(function (blogEntryInfo, index, blogDataArr) {
+                console.log('In for loop');
+
+                //Updates front page to have a link to the latest blog post
+                if(index === (blogDataArr.length - 1)){
+                    $("#latestPostTitle").append(blogEntryInfo.title);
+                }
+                $("#posts").append(createBlogPost(blogEntryInfo, index, blogDataArr.length - 1));
             });
         });
     }
@@ -32,19 +107,25 @@
     updateBlogPosts();
 
 
-    function createBlogPost(blogEntryInfo) {
+    function createBlogPost(blogEntryInfo, blogPostNum, numOfPosts) {
         var blogPostHtml = '';
         var categoriesStr = '';
         blogEntryInfo.categories.forEach(function (category) {
             categoriesStr += category + ' ';
         });
 
-        blogPostHtml += '<article>';
-        blogPostHtml += '<header>' + blogEntryInfo.title;
-        blogPostHtml += '</header>';
+        if (blogPostNum === numOfPosts) {
+            blogPostHtml += '<article id="latestPost">';
+        } else {
+            blogPostHtml += '<article class="mb-2">';
+        }
+        blogPostHtml += '<h3>' + blogEntryInfo.title;
+        blogPostHtml += '</h3>';
         blogPostHtml += '<p>' + blogEntryInfo.content;
         blogPostHtml += '</p>';
-        blogPostHtml += '<div>' + categoriesStr;
+        blogPostHtml += '<div class="text-secondary">';
+        blogPostHtml += '<span class="font-weight-bold">Tags: </span>';
+        blogPostHtml += categoriesStr;
         blogPostHtml += '</div>';
         blogPostHtml += '</article>';
 
@@ -52,10 +133,10 @@
         // });
         return blogPostHtml;
     }
-    
-    function f() {
-        
-    }
+
+    setInterval(function () {
+        updateBlogPosts();
+    }, 60000);
     
     </script>
 </body>
