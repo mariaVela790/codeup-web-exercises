@@ -14,46 +14,46 @@
     </style>
 </head>
 <body class="mainBackground">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Weather Application</h1>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Weather Application</h1>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h2 id="cityName"></h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="row" id="weatherForecast">
-
-                </div>
-            </div>
-            <div class="col-4">
-                <form action="">
-                    <!--<div>-->
-                        <!--<label for="latitude">-->
-                        <!--</label>-->
-                        <!--<input type="number" step="any" id="latitude">-->
-                    <!--</div>-->
-                    <!--<div>-->
-                        <!--<label for="longitude">-->
-                        <!--</label>-->
-                        <!--<input type="number" step="any" id="longitude">-->
-                    <!--</div>-->
-                    <div>
-                        <label for="searchCity">
-                        </label>
-                        <input type="text" id="searchCity">
-                    </div>
-                    <button type="submit" class="mt-2" id="getWeather">Get Weather</button>
-                </form>
-            </div>
-        </div>
-
     </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 id="cityName"></h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="row" id="weatherForecast">
+
+            </div>
+        </div>
+        <div class="col-4">
+            <form action="">
+                <!--<div>-->
+                <!--<label for="latitude">-->
+                <!--</label>-->
+                <!--<input type="number" step="any" id="latitude">-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<label for="longitude">-->
+                <!--</label>-->
+                <!--<input type="number" step="any" id="longitude">-->
+                <!--</div>-->
+                <div>
+                    <label for="searchCity">
+                    </label>
+                    <input type="text" id="searchCity">
+                </div>
+                <button type="submit" class="mt-2" id="getWeather">Get Weather</button>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -61,8 +61,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script>
+<script>
     $(document).ready(function () {
 
 
@@ -74,6 +74,15 @@
             // var latitude = parseFloat($('#latitude').val());
             // var longitude = parseFloat($('#longitude').val());
 
+            /**
+             * TODO:
+             * 1. get coordinates from geocoding
+             * 2. in the if statement for the geocoder, put the ajax call to the weather api
+             * 3. set up google map
+             * 4. using the long and lat from google api, call the weather api
+             * 5. put pin on map to serve as user input
+             */
+
             var address = $('#searchCity').val();
             console.log(address);
             var geocoder = new google.maps.Geocoder();
@@ -82,6 +91,7 @@
 
                 if(status == google.maps.GeocoderStatus.OK){
                     console.log(results);
+
                     // makeForecast(data);
                 } else {
                     alert("Geocoding was not successful - STATUS: " + status);
@@ -89,7 +99,7 @@
             });
 
             // $.get("http://api.openweathermap.org/data/2.5/forecast", {
-            //     APPID: "8453f337af4aae663eae6da20f638275",
+            //     APPID: "YOUR-KEY-HERE",
             //     units: "imperial",
             //     lat: latitude,
             //     lon: longitude
