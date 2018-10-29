@@ -33,15 +33,20 @@
             </div>
             <div class="col-4">
                 <form action="">
+                    <!--<div>-->
+                        <!--<label for="latitude">-->
+                        <!--</label>-->
+                        <!--<input type="number" step="any" id="latitude">-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<label for="longitude">-->
+                        <!--</label>-->
+                        <!--<input type="number" step="any" id="longitude">-->
+                    <!--</div>-->
                     <div>
-                        <label for="latitude">
+                        <label for="searchCity">
                         </label>
-                        <input type="number" step="any" id="latitude">
-                    </div>
-                    <div>
-                        <label for="longitude">
-                        </label>
-                        <input type="number" step="any" id="longitude">
+                        <input type="text" id="searchCity">
                     </div>
                     <button type="submit" class="mt-2" id="getWeather">Get Weather</button>
                 </form>
@@ -55,7 +60,8 @@
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <script>
     $(document).ready(function () {
 
@@ -65,16 +71,32 @@
             e.preventDefault();
             // console.log(typeof parseFloat($('#latitude').val()));
             // console.log($('#longitude').val());
-            var latitude = parseFloat($('#latitude').val());
-            var longitude = parseFloat($('#longitude').val());
-            $.get("http://api.openweathermap.org/data/2.5/forecast", {
-                APPID: "8453f337af4aae663eae6da20f638275",
-                units: "imperial",
-                lat: latitude,
-                lon: longitude
-            }).done(function (data) {
-                makeForecast(data);
+            // var latitude = parseFloat($('#latitude').val());
+            // var longitude = parseFloat($('#longitude').val());
+
+            var address = $('#searchCity').val();
+            console.log(address);
+            var geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({"address" : address}, function (results, status) {
+
+                if(status == google.maps.GeocoderStatus.OK){
+                    console.log(results);
+                    // makeForecast(data);
+                } else {
+                    alert("Geocoding was not successful - STATUS: " + status);
+                }
             });
+
+            // $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            //     APPID: "8453f337af4aae663eae6da20f638275",
+            //     units: "imperial",
+            //     lat: latitude,
+            //     lon: longitude
+            // }).done(function (data) {
+            //
+            //
+            // });
         });
 
         // console.log(Date.prototype.getDate());
