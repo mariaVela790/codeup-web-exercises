@@ -7,8 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Abel|Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+    <style>
+        .mainBackground {
+            background-color: rgb(180	219	250);
+        }
+    </style>
 </head>
-<body>
+<body class="mainBackground">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -20,9 +25,29 @@
                 <h2 id="cityName"></h2>
             </div>
         </div>
-        <div class="row" id="weatherForecast">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row" id="weatherForecast">
 
+                </div>
+            </div>
+            <div class="col-4">
+                <form action="">
+                    <div>
+                        <label for="latitude">
+                        </label>
+                        <input type="number" step="any" id="latitude">
+                    </div>
+                    <div>
+                        <label for="longitude">
+                        </label>
+                        <input type="number" step="any" id="longitude">
+                    </div>
+                    <button type="submit" class="mt-2" id="getWeather">Get Weather</button>
+                </form>
+            </div>
         </div>
+
     </div>
 
 
@@ -33,68 +58,83 @@
 
     <script>
     $(document).ready(function () {
-        $.get("http://api.openweathermap.org/data/2.5/forecast", {
-            APPID: "8453f337af4aae663eae6da20f638275",
-            q: "San Antonio, US",
-            units: "imperial"
-        }).done(function (data) {
-           makeForecast(data);
+
+
+
+        $('#getWeather').click(function (e) {
+            e.preventDefault();
+            // console.log(typeof parseFloat($('#latitude').val()));
+            // console.log($('#longitude').val());
+            var latitude = parseFloat($('#latitude').val());
+            var longitude = parseFloat($('#longitude').val());
+            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: "8453f337af4aae663eae6da20f638275",
+                units: "imperial",
+                lat: latitude,
+                lon: longitude
+            }).done(function (data) {
+                makeForecast(data);
+            });
         });
 
         // console.log(Date.prototype.getDate());
+
+        function makeForecast(data) {
+            var numberOfForecastDays = 24;
+            console.log(data);
+            console.log(data.city.name);//grabs name from the request
+            $('#cityName').html(data.city.name);
+            $("#weatherForecast").html('');
+            // .append("<div class='row'>");
+            for(var i = 0; i < numberOfForecastDays; i += 8){
+                var dataList = data.list[i];
+                var forecastHtml = '';
+                var maxAndMin = findMaxAndMin(dataList, i);
+                var max = maxAndMin[0];
+                var min = maxAndMin[1];
+                var iconName = dataList.weather[0].icon;
+                var imgSource = "http://openweathermap.org/img/w/" + iconName + ".png";
+
+                forecastHtml += "<div class='col-4 border border-secondary bg-light text-center'>";
+                forecastHtml += "<div><img src='" + imgSource + "' alt='testing picture'></div>";
+                forecastHtml += "<div></div>";
+                forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"; //displays min and max temps for the day
+                forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather for the day
+                forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
+                forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
+                forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
+                forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind speed
+                forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
+                forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
+                forecastHtml += "</div>";
+                $('#weatherForecast').append(forecastHtml);
+            }
+            // $("#weatherForecast").append("</div>");
+            $('.weatherSubTitles').addClass('capitalize');
+            $('.highAndLow').addClass('font-weight-bold')
+                .css('font-size', '1.5em');
+        }
+
+        function findMaxAndMin(dataList, index) {
+            var currentMax = 0;
+            var currentMin = 200;
+            var dayMaxAndMin = [];
+            for(var j = index - 7; j <= index ; j++){
+                if(dataList.main.temp_max > currentMax){
+                    currentMax = dataList.main.temp_max;
+                    // console.log('new max');
+                }
+                if(dataList.main.temp_min < currentMin){
+                    currentMin = dataList.main.temp_min;
+                    // console.log('new min');
+                }
+            }
+            dayMaxAndMin.push(currentMax, currentMin);
+            return dayMaxAndMin;
+        }
     });
 
-    function makeForecast(data) {
-        var numberOfForecastDays = 24;
-        console.log(data);
-        console.log(data.city.name);//grabs name from the request
-        $('#cityName').html(data.city.name);
-        $("#weatherForecast").html('');
-        // .append("<div class='row'>");
-        for(var i = 0; i < numberOfForecastDays; i += 8){
-            var dataList = data.list[i];
-            var forecastHtml = '';
-            var maxAndMin = findMaxAndMin(dataList, i);
-            var max = maxAndMin[0];
-            var min = maxAndMin[1];
-            var iconName = dataList.weather[0].icon;
 
-            forecastHtml += "<div class='col-4 border border-secondary text-center'>";
-            forecastHtml +=
-            forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"
-            forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather
-            forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
-            forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
-            forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
-            forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind
-            forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
-            forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
-            forecastHtml += "</div>";
-            $('#weatherForecast').append(forecastHtml);
-        }
-        // $("#weatherForecast").append("</div>");
-        $('.weatherSubTitles').addClass('capitalize');
-        $('.highAndLow').addClass('font-weight-bold')
-                        .css('font-size', '1.5em');
-    }
-
-    function findMaxAndMin(dataList, index) {
-        var currentMax = 0;
-        var currentMin = 200;
-        var dayMaxAndMin = [];
-        for(var j = index - 7; j <= index ; j++){
-            if(dataList.main.temp_max > currentMax){
-                currentMax = dataList.main.temp_max;
-                // console.log('new max');
-            }
-            if(dataList.main.temp_min < currentMin){
-               currentMin = dataList.main.temp_min;
-                // console.log('new min');
-            }
-        }
-        dayMaxAndMin.push(currentMax, currentMin);
-        return dayMaxAndMin;
-    }
     /**
      * problem statement:Find the max and the min temp for the day
      *
