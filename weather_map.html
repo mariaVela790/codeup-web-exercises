@@ -71,7 +71,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
-<script src="https://maps.googleapis.com/maps/api/js?key="></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=ENTER-KEY"></script>
 <script>
     $(document).ready(function () {
         var latLng = {
@@ -96,79 +96,105 @@
 
         function updateForecast(latitude, longitude) {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
-                APPID: "",
+                APPID: "ENTER-KEY",
                 units: "imperial",
                 lat: latitude,
                 lon: longitude
             }).done(function (data) {
+                $('#weatherForecast').html(makeForecast(data));
 
-                makeForecast(data);
-
+                //styling for elements just added
+                $('.weatherSubTitles').addClass('capitalize');
+                $('.highAndLow').addClass('font-weight-bold')
+                    .css('font-size', '1.5em');
             });
 
         }
 
+        /**
+         * problem statement:
+         */
+
+        /**
+         * problem statement: create a function to get the icon based on how many times a certain icon name appears
+         */
+
+        function getIcon() {
+
+        }
+
         function makeForecast(data) {
-            var numberOfForecastDays = 24;
+            var numberOfForecasts = 24;
             var dataList;
-            var forecastHtml;
+            var forecastHtml = '';
             var maxAndMin;
             var max;
             var min;
             var iconName;
-
+            var dateAndTimeArr;
+            var dayOfTheMonth;
+            var dayBefore = '';
+            var firstHour;
             var imgSource;
 
 
             console.log(data);
-            console.log(data.city.name);//grabs name from the request
             $('#cityName').html(data.city.name);
-            $("#weatherForecast").html('');
 
-            for(var i = 0; i < numberOfForecastDays; i += 8){
+            for(var i = 0; i < numberOfForecasts; i ++){
+
                 //variable initialization
                 dataList = data.list[i];
-                forecastHtml = '';
+                dateAndTimeArr = dataList.dt_txt.split(' ');//date and time array
+                dayOfTheMonth = dateAndTimeArr[0].split('-')[2];
+                console.log(dayOfTheMonth);
+                firstHour = (dateAndTimeArr[1].split(':'))[1];//first hour of interval
+
                 maxAndMin = findMaxAndMin(dataList, i);
                 max = maxAndMin[0];
                 min = maxAndMin[1];
-                iconName = dataList.weather[0].icon;
+                iconName = data.list[i].weather[0].icon;
                 imgSource = "http://openweathermap.org/img/w/" + iconName + ".png";
 
                 //html creation
-                forecastHtml += "<div class='col-4 border border-secondary bg-light text-center'>";
-                forecastHtml += "<div><img src='" + imgSource + "' alt='testing picture'></div>";
-                forecastHtml += "<div></div>";
-                forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"; //displays min and max temps for the day
-                forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather for the day
-                forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
-                forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
-                forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
-                forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind speed
-                forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
-                forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
-                forecastHtml += "</div>";
-                $('#weatherForecast').append(forecastHtml);
+                if(dayOfTheMonth === dayBefore){
+                    continue;
+                } else {
+                    forecastHtml += "<div class='col-4 border border-secondary bg-light text-center'>";
+                    forecastHtml += "<div><img src='" + imgSource + "' alt='testing picture'></div>";
+                    forecastHtml += "<div></div>";
+                    forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"; //displays min and max temps for the day
+                    forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather for the day
+                    forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
+                    forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
+                    forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
+                    forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind speed
+                    forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
+                    forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
+                    forecastHtml += "</div>";
+                }
+                dayBefore = dayOfTheMonth;
+
             }
-
-            //dynamic styling for elements
-            $('.weatherSubTitles').addClass('capitalize');
-
-            $('.highAndLow').addClass('font-weight-bold')
-                .css('font-size', '1.5em');
+            return forecastHtml;
         }
+        /**
+         * problem statement: The weather forecast starts with 6pm for the first day.
+         */
 
         function findMaxAndMin(dataList, index) {
             var currentMax = 0;
             var currentMin = 200;
             var dayMaxAndMin = [];
             for(var j = index - 7; j <= index ; j++){
-                if(dataList.main.temp_max > currentMax){
+                // if(){
+                if(dataList.main.temp_max > currentMax && dataList.main.temp_min < currentMin){
                     currentMax = dataList.main.temp_max;
-                }
-                if(dataList.main.temp_min < currentMin){
                     currentMin = dataList.main.temp_min;
                 }
+                // } else{
+                //     continue;
+                // }
             }
             dayMaxAndMin.push(currentMax, currentMin);
             return dayMaxAndMin;
