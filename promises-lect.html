@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--<script src="js/jquery.js"></script>-->
+<script src="js/promises-lecture.js"></script>
+<script>
+    let request = fetch('fetch.html');
+
+    console.log(request);
+
+    request.then(response => {
+        response.text().then(data => {
+            console.log(data);
+        }).then(() => console.log('A happens'))
+            .then(() => console.log('B happens'));
+    });
+
+    request.catch(error => console.log(error))
+</script>
+</body>
+</html>
