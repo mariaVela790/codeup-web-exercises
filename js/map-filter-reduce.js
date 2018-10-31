@@ -89,7 +89,7 @@ console.log(userWithLongestEmail);
  * Use reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
  */
 
-let usersNames = (users.reduce((allUsers, user) => `${allUsers} ${user.name},`, 'Your instructors are:')).slice(0, -1);
+let usersNames = (users.reduce((allUsers, user) => `${allUsers}${user.name},`, 'Your instructors are:')).slice(0, -1);
 // let usersNames = (users.reduce((allUsers, user) => `${allUsers} ${user.name},`, 'Your instructors are:')).split('');
 // usersNames.pop();
 // usersNames = usersNames.join('');
@@ -98,6 +98,16 @@ let usersNames = (users.reduce((allUsers, user) => `${allUsers} ${user.name},`, 
 console.log(usersNames);
 
 //////////////Bonus
+
+// let listOfLanguages = users.reduce((languages, user) => {
+//     for(let language of user.languages){
+//         // console.log(language);
+//         if(languages.indexOf(language) === -1){
+//             languages.push(language);
+//         }
+//     }
+//     return languages;
+// }, []);
 
 let listOfLanguages = users.reduce((languages, user) => {
     for(let language of user.languages){
@@ -110,3 +120,14 @@ let listOfLanguages = users.reduce((languages, user) => {
 }, []);
 
 console.log(listOfLanguages);
+
+let languages = users.reduce((accumulator, user) => {
+    user.languages.map(language => {
+        accumulator.push(language);
+    });
+    return accumulator;
+}, []);
+
+languages = new Set(languages);
+languages = Array.from(languages);
+console.log(languages);
