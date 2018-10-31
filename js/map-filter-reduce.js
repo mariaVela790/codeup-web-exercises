@@ -41,7 +41,7 @@ const users = [
 /**
  * Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
  */
-let threeOrMoreLanguages = users.filter(({languages}) => (languages.length >= 3));
+let threeOrMoreLanguages = users.filter(user => (user.languages.length >= 3));
 console.log(threeOrMoreLanguages);
 
 /**
@@ -71,6 +71,17 @@ let userWithLongestEmail = users.reduce((longEmail, user) => {
     return longEmail;
 
 }, '');
+
+// let userWithLongestEmail = users.reduce((longEmail, user) => {
+//     // if(user.email)
+//     if(longEmail.length < user.email.length){
+//         // longEmail = user.email;
+//         return user.email;
+//     } else{
+//         return longEmail;
+//     }
+//
+// }, '');
 
 console.log(userWithLongestEmail);
 
