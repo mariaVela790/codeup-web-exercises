@@ -18,13 +18,15 @@ $(document).ready(function () {
     var players = ['O', 'X'];
     var edgeLocations = ['12', '21', '23', '32'];
     var cornerLocations = ['11', '13', '31', '33'];
+    let edgeLocationsRow = ['21','23'];
+    let edgeLocationsCol = ['12','32'];
+    var center = '22';
     var boardGame = {
         tile11 : '', tile12 : '', tile13 : '',
         tile21 : '', tile22 : '', tile23 : '',
         tile31 : '', tile32 : '', tile33 : '',
     };
     //iterate over an array of the rows to check for a win
-    var center = '22';
 
 
     $('.box').click(function () {
@@ -40,7 +42,8 @@ $(document).ready(function () {
                 console.log(currentPlayer + ' wins');
             }
 
-            //resetting i
+            //setting i to move to next player
+            //BROKEN NEEDS TO GET FIXED
             if (i === 1) {
                 i = 0;
             } else {
@@ -58,7 +61,7 @@ $(document).ready(function () {
         //to decide which method of winning they are going for
 
         if(currentLocation === center){
-            console.log('checking for a center win in playerWins function');
+            // console.log('checking for a center win in playerWins function');
             //    call function that checks for wins starting from center
             playerWon = centerWin(currentPlayer);
 
@@ -84,26 +87,50 @@ $(document).ready(function () {
         //
         // }
 
+
         for(var i = 0; i < edgeLocations.length; i++){
-            console.log('centerWin function loop');
-            //This for loop checks if the player has another 'move'
-            console.log('in centerWin function loop, current player is ' + currentPlayer);
-            var edgeLocationId = '#' + edgeLocations[i];
+            // console.log('centerWin function loop');
+            //This for loop checks if the player has made previous moves on the edges
+            // console.log('in centerWin function loop, current player is ' + currentPlayer);
+            let edgeLocationId = '#' + edgeLocations[i];
+            // console.log('inner html for this edge box is' + $(edgeLocationId).text());
+            if($(edgeLocationId).text() === currentPlayer){//checks to see if the text at that square is made by the same player
+                // console.log('in centerWin function loop if statement, current player is ' + currentPlayer);
 
-            console.log('inner html for this edge box is' + $(edgeLocationId).text());
-            if($(edgeLocationId).text() === currentPlayer){//checks to see if the text at that id
-                console.log('in centerWin function loop if statement, current player is ' + currentPlayer);
-                //belongs to the same player
-                reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
-                //reverses matched edge id to see if the player got a straight row
-                if($(reversedEdgeLocation).text() === currentPlayer){
-                    console.log('row win');
-                    centerWon = true;//center wins because there is a perfect row
-
+                //get the location in the same row and same
+                let edgeLocationRow = edgeLocations[i].split('')[0];
+                console.log(edgeLocations[i]);
+                // console.log(edgeLocationRow);
+                let edgeLocationCol = edgeLocations[i].split('')[1];
+                // console.log(edgeLocationCol);
+                let centerRowAndCol = center.split('')[1];
+                // console.log(center[0]);
+                if(edgeLocationRow === centerRowAndCol){
+                    // console.log('in row');
+                    console.log('passed row');
+                    edgeLocationRow.forEach((edgeLocation) => {
+                       let edgeRowId = '#' + edgeLocation;
+                        if($(edgeRowId).text() === currentPlayer){
+                            console.log('center win');
+                            centerWon = true;
+                        } else{
+                            centerWon = false;
+                        }
+                    });
+                } else if(edgeLocationCol === centerRowAndCol){
+                    edgeLocationCol.forEach((edgeLocation) => {
+                        let edgeColId = '#' + edgeLocation;
+                        if($(edgeColId).text() !== currentPlayer){
+                            centerWon = false;
+                        }
+                    });
                 }
-                //call function for checking the third move by sending in
-                //the current edgeLocation[i]
-            } else if($(cornerLocations[i]).text() === currentPlayer){
+
+
+                // call function for checking the third move by sending in
+                // the current edgeLocation[i]
+            }
+            else if($(cornerLocations[i]).text() === currentPlayer){
                 reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
 
                 if(($(reversedEdgeLocation).text() === currentPlayer)
@@ -115,7 +142,9 @@ $(document).ready(function () {
 
                 }
             }
-        }
+        }//close of for loop
+
+
         return centerWon;
 
     }
@@ -166,5 +195,12 @@ $(document).ready(function () {
 // } else if(edgeLocations.indexOf(currentLocation) > -1){
 //
 // } else {
+//
+// }
+
+//reverses matched edge id to see if the player got a straight row
+// if($(reversedEdgeLocation).text() === currentPlayer){
+//     console.log('row win');
+//     centerWon = true;//center wins because there is a perfect row
 //
 // }
