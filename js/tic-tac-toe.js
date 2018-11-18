@@ -14,14 +14,14 @@
  */
 
 $(document).ready(function () {
-    var i = 0;
-    var players = ['O', 'X'];
-    var edgeLocations = ['12', '21', '23', '32'];
-    var cornerLocations = ['11', '13', '31', '33'];
+    let i = 0;
+    let players = ['O', 'X'];
+    let edgeLocations = ['12', '21', '23', '32'];
+    let cornerLocations = ['11', '13', '31', '33'];
     let edgeLocationsRow = ['21','23'];
     let edgeLocationsCol = ['12','32'];
-    var center = '22';
-    var boardGame = {
+    let center = '22';
+    let boardGame = {
         tile11 : '', tile12 : '', tile13 : '',
         tile21 : '', tile22 : '', tile23 : '',
         tile31 : '', tile32 : '', tile33 : '',
@@ -30,32 +30,28 @@ $(document).ready(function () {
 
 
     $('.box').click(function () {
-        var currentLocation = $(this).attr('id');
+        let currentLocation = $(this).attr('id');
         if($(this).text() === '') {//makes sure the current box is empty before writing in it
-            var currentPlayer = players[i];//improves readability
+            let currentPlayer = players[i];//improves readability
 
             $(this).text(currentPlayer);
             boardGame['id' + currentLocation] = currentPlayer;
-            // console.log(boardGame);
-            // console.log(playerWins(currentPlayer, currentLocation));
             if(playerWins(currentPlayer, currentLocation)){
                 console.log(currentPlayer + ' wins');
             }
 
             //setting i to move to next player
-            //BROKEN NEEDS TO GET FIXED
             if (i === 1) {
                 i = 0;
             } else {
                 i++;
             }
-
         }
         // console.log(typeof '#');
     });
 
-    function playerWins(currentPlayer, currentLocation) {
-        var playerWon = false;
+    const playerWins = (currentPlayer, currentLocation) => {
+        let playerWon = false;
 
         //the following checks what type of "first" move the player made
         //to decide which method of winning they are going for
@@ -68,19 +64,24 @@ $(document).ready(function () {
         } else if(edgeLocations.indexOf(currentLocation) > -1){
             //    call function that checks for wins from edge
 
-            //playerWon = edgeWin(currentPlayer);
+            playerWon = edgeWin(currentPlayer);
         } else {
             //    call function that checks for wins from corners
 
             //playerWon = cornerWin(currentPlayer);
         }
-
         return playerWon;
-    }
+    };
 
-    function centerWin(currentPlayer){
-        var centerWon = false;
-        var reversedEdgeLocation;
+
+    //The following function takes in the second move, when valid
+    //and check is the third move makes a win
+    const edgeWin = (secondLocation) => {
+
+    };
+
+    const centerWin = (currentPlayer) => {
+        let centerWon = false;
 
         // var secondX = $(event).attr('id');
         // if(edgeLocations.indexOf($(event).attr('id'))){
@@ -88,7 +89,7 @@ $(document).ready(function () {
         // }
 
 
-        for(var i = 0; i < edgeLocations.length; i++){
+        for(let i = 0; i < edgeLocations.length; i++){
             // console.log('centerWin function loop');
             //This for loop checks if the player has made previous moves on the edges
             // console.log('in centerWin function loop, current player is ' + currentPlayer);
@@ -108,22 +109,26 @@ $(document).ready(function () {
                 if(edgeLocationRow === centerRowAndCol){
                     // console.log('in row');
                     console.log('passed row');
-                    edgeLocationRow.forEach((edgeLocation) => {
-                       let edgeRowId = '#' + edgeLocation;
-                        if($(edgeRowId).text() === currentPlayer){
+                    for(let i = 0; i < edgeLocationsRow.length; i++){
+                        let edgeRowId = '#' + edgeLocationsRow[i];
+                        if($(edgeRowId).text() === currentPlayer){//says that the center win is true until one square doesn't match
                             console.log('center win');
                             centerWon = true;
                         } else{
-                            centerWon = false;
+                            centerWon = false;//when a square doesn't match, the centerWon is false
+                            break;
                         }
-                    });
+                    }
                 } else if(edgeLocationCol === centerRowAndCol){
-                    edgeLocationCol.forEach((edgeLocation) => {
-                        let edgeColId = '#' + edgeLocation;
-                        if($(edgeColId).text() !== currentPlayer){
+                    for(let i = 0; edgeLocationsCol.length; i++){
+                        let edgeColId = '#' + edgeLocationsCol[i];
+                        if($(edgeColId).text() === currentPlayer){
+                            centerWon = true;
+                        } else{
                             centerWon = false;
+                            break;
                         }
-                    });
+                    }
                 }
 
 
@@ -131,7 +136,7 @@ $(document).ready(function () {
                 // the current edgeLocation[i]
             }
             else if($(cornerLocations[i]).text() === currentPlayer){
-                reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
+                let reversedEdgeLocation = edgeLocations[i].split('').reverse().join('');
 
                 if(($(reversedEdgeLocation).text() === currentPlayer)
                     || $('#11').text() === currentPlayer
@@ -147,13 +152,8 @@ $(document).ready(function () {
 
         return centerWon;
 
-    }
+    };
 
-    //The following function takes in the second move, when valid
-    //and check is the third move makes a win
-    function validThirdMove(secondLocation){
-
-    }
 
 
 
@@ -178,7 +178,7 @@ $(document).ready(function () {
 ////////////////TRASH BIN
 // if(currentLocation === '22'){
 //     console.log('in if');
-//     var valInEdgeBox;
+//     let valInEdgeBox;
 //     for(var j = 0; j < edgeLocations.length; j++){
 //         console.log('in loop');
 //         valInEdgeBox = $('#' + edgeLocations[j]).html();
