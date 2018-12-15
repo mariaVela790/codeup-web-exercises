@@ -9,5 +9,9 @@
 }
 
 .announcementFont {
-    font-size: 3em;
+    font-size: 4em;
+}
+
+.player-font{
+    font-size: 200px;
 }

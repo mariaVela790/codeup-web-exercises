@@ -30,7 +30,9 @@ $(document).ready(function () {
         if($(this).text() === '') {//makes sure the current box is empty before writing in it
             let currentPlayer = players[i];//improves readability
 
-            $(this).text(currentPlayer);
+            $(this).html(`
+                <span class="text-white">${currentPlayer}</span>
+            `);
             boardGame['tile' + currentLocation] = currentPlayer;
             // if(playerWins(currentPlayer, currentLocation)){
             //     console.log(currentPlayer + ' wins');
@@ -41,9 +43,9 @@ $(document).ready(function () {
             if(winner !== ''){
                 $('.box').off();
                 $('.winnerAnnouncement').html(`
-                    <div class="announcementFont">
+                    <span class="announcementFont">
                         Player ${winner} wins!
-                    </div>
+                    </span>
                 `);
             }
 
