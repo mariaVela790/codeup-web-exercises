@@ -31,7 +31,7 @@ $(document).ready(function () {
             let currentPlayer = players[i];//improves readability
 
             $(this).html(`
-                <span class="text-white">${currentPlayer}</span>
+                <div class="text-white">${currentPlayer}</div>
             `);
             boardGame['tile' + currentLocation] = currentPlayer;
             // if(playerWins(currentPlayer, currentLocation)){
@@ -44,9 +44,9 @@ $(document).ready(function () {
             if(winner !== ''){
                 $('.box').off();
                 $('.winnerAnnouncement').html(`
-                    <span class="announcementFont">
+                    <div class="announcementFont">
                         Player ${winner} wins!
-                    </span>
+                    </div>
                 `);
             }
 
@@ -90,13 +90,7 @@ $(document).ready(function () {
                 console.log('O wins');
                 return 'O';
             }
-            // if(strMatch(testStr1, testStr2, testStr3, testStr4, 'XXX')){
-            //     console.log('X wins');
-            //     return 'X';
-            // } else if(strMatch(testStr1, testStr2, testStr3, testStr4, 'OOO')){
-            //     console.log('O wins');
-            //     return 'O';
-            // }
+
         }
         return '';
     };
@@ -104,11 +98,5 @@ $(document).ready(function () {
     const strMatch = (testStr, comparisonStr) => {
         return (testStr === comparisonStr);
     };
-    // const strMatch = (testStr1, testStr2, testStr3, testStr4, comparisonStr) => {
-    //     return (testStr1 === comparisonStr
-    //         || testStr2 === comparisonStr
-    //         || testStr3 === comparisonStr
-    //         || testStr4 === comparisonStr);
-    // };
 
 });//End of the doc ready
