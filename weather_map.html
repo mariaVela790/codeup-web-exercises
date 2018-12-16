@@ -35,26 +35,6 @@
 
             </div>
         </div>
-        <!--<div class="col-4">-->
-        <!--<form action="">-->
-        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<label for="latitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="number" step="any" id="latitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<label for="longitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="number" step="any" id="longitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--<div>-->
-        <!--<label for="searchCity">-->
-        <!--</label>-->
-        <!--<input type="text" id="searchCity">-->
-        <!--</div>-->
-        <!--<button type="submit" class="mt-2" id="getWeather">Get Weather</button>-->
-        <!--</form>-->
-        <!--</div>-->
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-10 mx-auto">
@@ -74,33 +54,33 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=ENTER-KEY"></script>
 <script>
     $(document).ready(function () {
-        var latLng = {
+        let latLng = {
             lat: 29.426791,
             lng: -98.489602
         };
 
         //Creates map
-        var mapOptions = {
+        let mapOptions = {
             zoom: 4,
             center: latLng
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        let map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
         //Creates marker
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
             position: latLng,
             map: map,
             draggable: true
         });
 
 
-        function updateForecast(latitude, longitude) {
+        const updateForecast = (latitude, longitude) => {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: "ENTER-KEY",
                 units: "imperial",
                 lat: latitude,
                 lon: longitude
-            }).done(function (data) {
+            }).done((data) => {
                 $('#weatherForecast').html(makeForecast(data));
 
                 //styling for elements just added
@@ -109,39 +89,31 @@
                     .css('font-size', '1.5em');
             });
 
-        }
+        };
 
-        /**
-         * problem statement:
-         */
+        const getIcon = (iconName) => {
+            return "http://openweathermap.org/img/w/" + iconName + ".png";
+        };
 
-        /**
-         * problem statement: create a function to get the icon based on how many times a certain icon name appears
-         */
-
-        function getIcon() {
-
-        }
-
-        function makeForecast(data) {
-            var numberOfForecasts = 24;
-            var dataList;
-            var forecastHtml = '';
-            var maxAndMin;
-            var max;
-            var min;
-            var iconName;
-            var dateAndTimeArr;
-            var dayOfTheMonth;
-            var dayBefore = '';
-            var firstHour;
-            var imgSource;
+        const makeForecast = (data) => {
+            let numberOfForecasts = 24;
+            let dataList;
+            let forecastHtml = '';
+            let maxAndMin;
+            let max;
+            let min;
+            let iconName;
+            let dateAndTimeArr;
+            let dayOfTheMonth;
+            let dayBefore = '';
+            let firstHour;
+            let imgSource;
 
 
             console.log(data);
             $('#cityName').html(data.city.name);
 
-            for(var i = 0; i < numberOfForecasts; i ++){
+            for(let i = 0; i < numberOfForecasts; i ++){
 
                 //variable initialization
                 dataList = data.list[i];
@@ -154,169 +126,72 @@
                 max = maxAndMin[0];
                 min = maxAndMin[1];
                 iconName = data.list[i].weather[0].icon;
-                imgSource = "http://openweathermap.org/img/w/" + iconName + ".png";
+                imgSource = getIcon(iconName);
 
                 //html creation
                 if(dayOfTheMonth === dayBefore){
                     continue;
                 } else {
-                    forecastHtml += "<div class='col-4 border border-secondary bg-light text-center'>";
-                    forecastHtml += "<div><img src='" + imgSource + "' alt='testing picture'></div>";
-                    forecastHtml += "<div></div>";
-                    forecastHtml += "<div><span class='highAndLow'>" + max + "/" + min + "</spanclass></div>"; //displays min and max temps for the day
-                    forecastHtml +="<div><span class='weatherSubTitles'>" + dataList.weather[0].main;//grabs weather for the day
-                    forecastHtml += "</span>" +  ": " + dataList.weather[0].description + "</div>";//grabs description of weather and closes weather
-                    forecastHtml += "<div><span class='weatherSubTitles'> Humidity: </span>" + dataList.main.humidity + "</div>";//grabs humidity
-                    forecastHtml += "<div><span class='weatherSubTitles'> Wind: </span>";//labels wind
-                    forecastHtml +=  dataList.wind.speed + "</div>";//grabs wind speed
-                    forecastHtml += "<div><span class='weatherSubTitles'> Pressure: </span>";//labels wind
-                    forecastHtml += dataList.main.pressure + "</div>";//grabs pressure
-                    forecastHtml += "</div>";
+                    forecastHtml += `<div class='col-4 border border-secondary bg-light text-center'>
+                                            <div>
+                                                <img src='" + imgSource + "' alt='testing picture'>
+                                            </div>
+                                             <div>
+
+                                            </div>
+                                            <div>
+                                                <span class='highAndLow'> max / min </spanclass>
+                                                <!--displays min and max temps for the day-->
+                                            </div>
+                                            <div>
+                                                <span class='weatherSubTitles'> dataList.weather[0].main</span> : dataList.weather[0].description
+                                                <!--grabs weather for the day and grabs description of weather and closes weather-->
+                                            </div>
+                                             <div>
+                                                <span class='weatherSubTitles'> Humidity: </span> dataList.main.humidity
+                                                <!--grabs humidity-->
+                                            </div>
+                                            <div>
+                                                 <span class='weatherSubTitles'> Wind: </span>dataList.wind.speed
+                                                 <!--labels the wind and grabs wind speed-->
+                                           </div>
+                                            <div>
+                                                <span class='weatherSubTitles'> Pressure: </span>dataList.main.pressure
+                                                <!--labels pressure and grabs pressure-->
+                                            </div>
+                                     </div>`;
                 }
                 dayBefore = dayOfTheMonth;
 
             }
             return forecastHtml;
-        }
-        /**
-         * problem statement: The weather forecast starts with 6pm for the first day.
-         */
+        };
 
-        function findMaxAndMin(dataList, index) {
-            var currentMax = 0;
-            var currentMin = 200;
-            var dayMaxAndMin = [];
-            for(var j = index - 7; j <= index ; j++){
-                // if(){
+        const findMaxAndMin = (dataList, index) => {
+            let currentMax = 0;
+            let currentMin = 200;
+            let dayMaxAndMin = [];
+            for(let j = index - 7; j <= index ; j++){
                 if(dataList.main.temp_max > currentMax && dataList.main.temp_min < currentMin){
                     currentMax = dataList.main.temp_max;
                     currentMin = dataList.main.temp_min;
                 }
-                // } else{
-                //     continue;
-                // }
             }
             dayMaxAndMin.push(currentMax, currentMin);
             return dayMaxAndMin;
         }
 
-
+        //////////////code to run
         updateForecast(latLng.lat, latLng.lng);
 
+        /////////////event listeners
         //////////////////get new position from marker when marker is moved
         marker.addListener('dragend', function () {
-            var latitude = marker.getPosition().lat();
-            var longitude = marker.getPosition().lng();
-            //
-            // marker = new google.maps.Marker({
-            //     position: {
-            //         lat: latitude,
-            //         lng: longitude
-            //     },
-            //     map: map,
-            //     draggable: true
-            // });
+            let latitude = marker.getPosition().lat();
+            let longitude = marker.getPosition().lng();
             updateForecast(latitude, longitude);//updates map and forecast once center is changed
-
-
-
         });
-
-
-        /**
-         * TODO:
-         * - allow the user to search by place name, then move the map to that location and update the weather
-         *   (will need to make a geocoding request, then use the results of the geocoding request in a call to the open weather api)
-         *
-         * - allow users to specify how many days they want a forecast for (e.g. users can specify if they want just
-         *   today’s weather, a 2-day forecast, a 3-day forecast, a 5-day forecast etc.)
-         *
-         * - use a google maps info window to display the current weather conditions above the marker for the place
-         *
-         * - allow users to choose how much detail they want in their forecast (just the high and low for the day? do
-         *   they also want to see an icon? wind speed, humidity, etc)
-         *
-         * - when a geocoding request is made, google responds with a list of places (starting with the closest match).
-         *  When the user searches for a location, show them all the results for that location in a `select` element, and when
-         *  they change the `select`, update the map and the displayed weather accordingly
-         */
-
-
-
-
-        // console.log(Date.prototype.getDate());
-
-
-
-
     });
-
-
-    // });
-
-
-    /**
-     * problem statement:Find the max and the min temp for the day
-     *
-     * PSEUDO CODE:
-     * 1. For each data list in our for loop: cycle through starting from index - 7 and going to the index (including)
-     * 2. in each iteration, ask if the max temp is greater than the current max and if the min temp is smaller than the current min temp
-     */
-    // MAKE THE WEATHER FORECAST
-    // make a function to get the weather object from the OpenWeatherMap API
-    // base url should be "http://api.openweathermap.org/data/2.5/forecast"
-    // practice writing console.logs of various parts of the OpenWeatherMap object...
-    // console.log the current weather description
-    // console.log the humidity of the 2nd day
-    // console.log the humidity of all the days (use a for loop)
-    // console.log the temperature of the 3rd day in celsius
-    // console.log the temperature of the 3rd day in Fahrenheit
-    // console.log all types of information you will ultimately display for a single day in the 3-day forecast div
-    // console.log all type of information you will ultimately display for all days in the 3-day forecast divs
-    // write html and css to make/style a three-day forecast set of divs (may use design from curriculum)
-    // create a function to append specific parts of the OpenWeatherMap map object to the DOM and call it in the .done() of the OpenWeatherMap map GET request.
-    // remember to first console.log specific data from the OpenWeatherMap object, then work on adding to the DOM
-    // read and reread the curriculum and OpenWeatherMap docs carefully on how to get an image of the weather forecast
-    // hint: "http://openweathermap.org/img/w/" + whateverTheWeatherIconValueIs
-    // verify that the OpenWeatherMap data populates by hard coding in lat and lon values
-    // create lat and lon variables to hold lat and lon values.
-    // add lat and lon properties to the function that calls the OpenWeatheMap API GET request
-    // add an input field for lat and lon with button that fires a new request to the OpenWeatherMap API and passes the lat and lon values from the input fields into the request.
-
-
-
-
-    // CREATE THE MAP
-    // using syntax from the previous Maps exercise, add a map below the OpenWeatherMap forecast
-    // add a marker to the map and make it draggable
-    // create a marker drag event that console logs the lat and lon where the marker is dropped
-    // WIRE UP MAP TO WEATHER API
-    // add the function call that makes the Weather API request to the marker drag event and pass in the lat and lon values of the marker to the Weather API request function
-
-    /////////////////////////////TRASH BIN
-    //GRABS WEATHER BASED ON FORM INPUT
-    // var address = $('#searchCity').val();
-    // console.log(address);
-    // var geocoder = new google.maps.Geocoder();
-    //
-    // geocoder.geocode({"address" : address}, function (results, status) {
-    //
-    //     if(status == google.maps.GeocoderStatus.OK){
-    //         console.log(results);
-    //
-    //     } else {
-    //         alert("Geocoding was not successful - STATUS: " + status);
-    //     }
-    // });
-
-    //Gets lat and lng based on the form input
-    // $('#getWeather').click(function (e) {
-    //     e.preventDefault();
-    // console.log(typeof parseFloat($('#latitude').val()));
-    // console.log($('#longitude').val());
-    // var latitude = parseFloat($('#latitude').val());
-    // var longitude = parseFloat($('#longitude').val());
-
 
 </script>
 </body>
