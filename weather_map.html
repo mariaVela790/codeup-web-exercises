@@ -35,26 +35,6 @@
 
             </div>
         </div>
-        <!--<div class="col-4">-->
-        <!--<form action="">-->
-        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<label for="latitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="number" step="any" id="latitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<label for="longitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="number" step="any" id="longitude">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--<div>-->
-        <!--<label for="searchCity">-->
-        <!--</label>-->
-        <!--<input type="text" id="searchCity">-->
-        <!--</div>-->
-        <!--<button type="submit" class="mt-2" id="getWeather">Get Weather</button>-->
-        <!--</form>-->
-        <!--</div>-->
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-10 mx-auto">
@@ -100,7 +80,7 @@
                 units: "imperial",
                 lat: latitude,
                 lon: longitude
-            }).done(function (data) {
+            }).done((data) => {
                 $('#weatherForecast').html(makeForecast(data));
 
                 //styling for elements just added
@@ -116,24 +96,24 @@
         };
 
         const makeForecast = (data) => {
-            var numberOfForecasts = 24;
-            var dataList;
-            var forecastHtml = '';
-            var maxAndMin;
-            var max;
-            var min;
-            var iconName;
-            var dateAndTimeArr;
-            var dayOfTheMonth;
-            var dayBefore = '';
-            var firstHour;
-            var imgSource;
+            let numberOfForecasts = 24;
+            let dataList;
+            let forecastHtml = '';
+            let maxAndMin;
+            let max;
+            let min;
+            let iconName;
+            let dateAndTimeArr;
+            let dayOfTheMonth;
+            let dayBefore = '';
+            let firstHour;
+            let imgSource;
 
 
             console.log(data);
             $('#cityName').html(data.city.name);
 
-            for(var i = 0; i < numberOfForecasts; i ++){
+            for(let i = 0; i < numberOfForecasts; i ++){
 
                 //variable initialization
                 dataList = data.list[i];
