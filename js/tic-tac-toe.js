@@ -40,6 +40,7 @@ $(document).ready(function () {
             //
 
             let winner = checkForWin();
+            console.log('Checked for win');
             if(winner !== ''){
                 $('.box').off();
                 $('.winnerAnnouncement').html(`
@@ -80,20 +81,34 @@ $(document).ready(function () {
                     console.log(testStr4);
                 }
             }
-            if(strMatch(testStr1, testStr2, testStr3, testStr4, 'XXX')){
+            if(strMatch(testStr1, 'XXX') || strMatch( testStr2, 'XXX') || strMatch(testStr3, 'XXX') || strMatch(testStr4, 'XXX')){
+                console.log(`${testStr1}, ${testStr2}, ${testStr3}, ${testStr4}`);
+                console.log('X wins');
                 return 'X';
-            } else if(strMatch(testStr1, testStr2, testStr3, testStr4, 'OOO')){
+            } else if(strMatch(testStr1, 'OOO') || strMatch( testStr2, 'OOO') || strMatch(testStr3, 'OOO') || strMatch(testStr4, 'OOO')){
+                console.log(`${testStr1}, ${testStr2}, ${testStr3}, ${testStr4}`);
+                console.log('O wins');
                 return 'O';
             }
+            // if(strMatch(testStr1, testStr2, testStr3, testStr4, 'XXX')){
+            //     console.log('X wins');
+            //     return 'X';
+            // } else if(strMatch(testStr1, testStr2, testStr3, testStr4, 'OOO')){
+            //     console.log('O wins');
+            //     return 'O';
+            // }
         }
         return '';
     };
 
-    const strMatch = (testStr1, testStr2, testStr3, testStr4, comparisonStr) => {
-        return (testStr1 === comparisonStr
-            || testStr2 === comparisonStr
-            || testStr3 === comparisonStr
-            || testStr4 === comparisonStr);
+    const strMatch = (testStr, comparisonStr) => {
+        return (testStr === comparisonStr);
     };
+    // const strMatch = (testStr1, testStr2, testStr3, testStr4, comparisonStr) => {
+    //     return (testStr1 === comparisonStr
+    //         || testStr2 === comparisonStr
+    //         || testStr3 === comparisonStr
+    //         || testStr4 === comparisonStr);
+    // };
 
 });//End of the doc ready
